@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="songjian (generated)" id="1528879258799-1">
+      <createTable tableName="footprint">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="footprintPK"/>
+         </column>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="reader_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="source_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="source_type" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jerk_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-2">
+      <createTable tableName="jerk_info">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jerk_infoPK"/>
+         </column>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="dqzykh" type="VARCHAR(255)"/>
+         <column name="dwhgrdz" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="dwqc" type="VARCHAR(60)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="email" type="VARCHAR(36)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="fzrdh" type="VARCHAR(20)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="fzrnl" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="gjrcs" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="gnwhjjx" type="VARCHAR(500)"/>
+         <column name="gscpjj" type="VARCHAR(360)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="hxcpmc" type="VARCHAR(120)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="hxjsly" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jmlyqk" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jscsd" type="VARCHAR(120)"/>
+         <column name="jzmsylqk" type="VARCHAR(500)"/>
+         <column name="jzysjs" type="VARCHAR(500)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="kjcgzh" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxdh" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxdz" type="VARCHAR(120)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxfs" type="VARCHAR(36)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxrzw" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxyx" type="VARCHAR(60)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="mbkhsc" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="modified_date" type="TINYBLOB"/>
+         <column name="rzjhgkfw" type="VARCHAR(255)"/>
+         <column name="rzmb" type="VARCHAR(255)"/>
+         <column name="sfgjrzgxjsqy" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="sfxyxc" type="VARCHAR(100)"/>
+         <column name="ssly" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="ssly_1" type="VARCHAR(60)"/>
+         <column name="szqylx" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="tdpjnl" type="VARCHAR(255)"/>
+         <column name="tdysjs" type="VARCHAR(500)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="wlxwhdzclx" type="VARCHAR(36)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="wlxwhdzclx_1" type="VARCHAR(100)"/>
+         <column name="xb" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="xycz" type="VARCHAR(24)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="zljs" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="zztjdw" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-3">
+      <createTable tableName="mailbox">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="mailboxPK"/>
+         </column>
+         <column name="anonymous" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="mcontent" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="msg_type" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="read_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="receiver_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="send_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="source_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="title" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-4">
+      <createTable tableName="preference">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="preferencePK"/>
+         </column>
+         <column name="address" type="VARCHAR(255)"/>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="image_url" type="VARCHAR(255)"/>
+         <column name="lang" type="VARCHAR(255)"/>
+         <column name="modified_date" type="TINYBLOB"/>
+         <column name="wechat" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-5">
+      <createTable tableName="registration">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="registrationPK"/>
+         </column>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="dqzykh" type="VARCHAR(255)"/>
+         <column name="dwhgrdz" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="dwqc" type="VARCHAR(60)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="email" type="VARCHAR(36)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="fzrdh" type="VARCHAR(20)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="fzrnl" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="gjrcs" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="gnwhjjx" type="VARCHAR(500)"/>
+         <column name="gscpjj" type="VARCHAR(360)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="hxcpmc" type="VARCHAR(120)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="hxjsly" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jmlyqk" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jscsd" type="VARCHAR(120)"/>
+         <column name="jzmsylqk" type="VARCHAR(500)"/>
+         <column name="jzysjs" type="VARCHAR(500)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="kjcgzh" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxdh" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxdz" type="VARCHAR(120)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxfs" type="VARCHAR(36)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxrzw" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="lxyx" type="VARCHAR(60)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="mbkhsc" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="modified_date" type="TINYBLOB"/>
+         <column name="regist_type" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="rzjhgkfw" type="VARCHAR(255)"/>
+         <column name="rzmb" type="VARCHAR(255)"/>
+         <column name="sfgjrzgxjsqy" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="sfxyxc" type="VARCHAR(100)"/>
+         <column name="ssly" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="ssly_1" type="VARCHAR(60)"/>
+         <column name="szqylx" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="tdpjnl" type="VARCHAR(255)"/>
+         <column name="tdysjs" type="VARCHAR(500)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="wlxwhdzclx" type="VARCHAR(36)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="wlxwhdzclx_1" type="VARCHAR(100)"/>
+         <column name="xb" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="xycz" type="VARCHAR(24)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="zljs" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="zztjdw" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-6">
+      <createTable tableName="setting">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="settingPK"/>
+         </column>
+         <column name="defvalue" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="name" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jhi_type" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jhi_value" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-7">
+      <createTable tableName="tag">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="tagPK"/>
+         </column>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="modified_date" type="TINYBLOB"/>
+         <column name="name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="status" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jhi_type" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="weight" type="INT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-8">
+      <addColumn tableName="jerk">
+         <column name="auth_status" type="varchar(255)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-9">
+      <addColumn tableName="jerk">
+         <column name="jerk_info_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-10">
+      <addColumn tableName="jerk">
+         <column name="preference_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-11">
+      <addUniqueConstraint columnNames="jerk_info_id"
+                           constraintName="UC_JERKJERK_INFO_ID_COL"
+                           tableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-12">
+      <addUniqueConstraint columnNames="preference_id"
+                           constraintName="UC_JERKPREFERENCE_ID_COL"
+                           tableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-13">
+      <addForeignKeyConstraint baseColumnNames="jerk_id"
+                               baseTableName="footprint"
+                               constraintName="FK5pp2nhkjaq0pdf78p276br85o"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-14">
+      <addForeignKeyConstraint baseColumnNames="preference_id"
+                               baseTableName="jerk"
+                               constraintName="FKekx3gjdv59m0t222xbtqswvon"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="preference"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-15">
+      <addForeignKeyConstraint baseColumnNames="send_id"
+                               baseTableName="mailbox"
+                               constraintName="FKhqlig2bqvwnyn1arx4dsdtild"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-16">
+      <addForeignKeyConstraint baseColumnNames="receiver_id"
+                               baseTableName="mailbox"
+                               constraintName="FKog5tlejd2uf5wyk1vae5kmb8g"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-17">
+      <addForeignKeyConstraint baseColumnNames="jerk_info_id"
+                               baseTableName="jerk"
+                               constraintName="FKsauyivwffhrd9s1g1db9iwydv"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="registration"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-18">
+      <dropUniqueConstraint constraintName="user_id" tableName="jhi_social_user_connection"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-19">
+      <dropUniqueConstraint constraintName="user_id_2" tableName="jhi_social_user_connection"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1528879258799-20">
+      <dropColumn columnName="usertype" tableName="jerk"/>
+   </changeSet>
+</databaseChangeLog>

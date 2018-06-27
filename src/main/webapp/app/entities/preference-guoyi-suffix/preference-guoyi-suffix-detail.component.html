@@ -1,0 +1,46 @@
+
+<div *ngIf="preference">
+    <h2><span jhiTranslate="jerkaeroApp.preference.detail.title">Preference</span> {{preference.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jerkaeroApp.preference.wechat">Wechat</span></dt>
+        <dd>
+            <span>{{preference.wechat}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.preference.address">Address</span></dt>
+        <dd>
+            <span>{{preference.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.preference.imageUrl">Image Url</span></dt>
+        <dd>
+            <span>{{preference.imageUrl}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.preference.lang">Lang</span></dt>
+        <dd>
+            <span>{{preference.lang}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.preference.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{preference.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.preference.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{preference.modifiedDate | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'preference-guoyi-suffix/'+ preference.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

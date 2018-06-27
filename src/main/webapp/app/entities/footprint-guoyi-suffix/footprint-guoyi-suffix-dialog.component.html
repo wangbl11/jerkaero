@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFootprintLabel" jhiTranslate="jerkaeroApp.footprint.home.createOrEditLabel">Create or edit a Footprint</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!footprint.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="footprint.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.footprint.sourceId" for="field_sourceId">Source Id</label>
+            <input type="number" class="form-control" name="sourceId" id="field_sourceId"
+                [(ngModel)]="footprint.sourceId" required/>
+            <div [hidden]="!(editForm.controls.sourceId?.dirty && editForm.controls.sourceId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sourceId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.sourceId?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.footprint.sourceType" for="field_sourceType">Source Type</label>
+            <input type="number" class="form-control" name="sourceType" id="field_sourceType"
+                [(ngModel)]="footprint.sourceType" required/>
+            <div [hidden]="!(editForm.controls.sourceType?.dirty && editForm.controls.sourceType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sourceType?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.sourceType?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.footprint.readerId" for="field_readerId">Reader Id</label>
+            <input type="number" class="form-control" name="readerId" id="field_readerId"
+                [(ngModel)]="footprint.readerId" required/>
+            <div [hidden]="!(editForm.controls.readerId?.dirty && editForm.controls.readerId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.readerId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.readerId?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.footprint.createdDate" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="footprint.createdDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.createdDate?.dirty && editForm.controls.createdDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.createdDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.footprint.jerk" for="field_jerk">Jerk</label>
+            <select class="form-control" id="field_jerk" name="jerk" [(ngModel)]="footprint.jerk" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="jerkOption.id === footprint.jerk?.id ? footprint.jerk : jerkOption" *ngFor="let jerkOption of jerks; trackBy: trackJerkById">{{jerkOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

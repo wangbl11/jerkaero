@@ -1,0 +1,27 @@
+
+{
+    "jerkaeroApp": {
+        "footprint" : {
+            "home": {
+                "title": "Footprints",
+                "createLabel": "建立一筆新的 Footprint",
+                "createOrEditLabel": "建立或編輯 Footprint",
+                "search": "搜尋 Footprint"
+            },
+            "created": "新的 Footprint 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Footprint 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Footprint 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 Footprint {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Footprint"
+            },
+            "sourceId": "Source Id",
+            "sourceType": "Source Type",
+            "readerId": "Reader Id",
+            "createdDate": "Created Date",
+            "jerk": "Jerk"
+        }
+    }
+}

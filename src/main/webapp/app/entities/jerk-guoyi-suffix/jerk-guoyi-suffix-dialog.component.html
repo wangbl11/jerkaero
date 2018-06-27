@@ -1,0 +1,122 @@
+<form *ngIf="jerk" name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myJerkLabel" jhiTranslate="jerkaeroApp.jerk.home.createOrEditLabel">Create or edit a Jerk</h4>
+        <!-- 
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+                 -->
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!jerk.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="jerk.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.jerk.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="jerk.username" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.username?.dirty && editForm.controls.username?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.username?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.username?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <!-- 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.jerk.passwd" for="field_passwd">Passwd</label>
+            <input type="password" class="form-control" name="passwd" id="field_passwd"
+                [(ngModel)]="jerk.passwd" required minlength=4 maxlength="60"/>
+            <div [hidden]="!(editForm.controls.passwd?.dirty && editForm.controls.passwd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.passwd?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.passwd?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+            <jhi-password-strength-bar [passwordToCheck]="passwd"></jhi-password-strength-bar>
+        </div>
+         -->
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.jerk.displayname" for="field_displayname">Displayname</label>
+            <input type="text" class="form-control" name="displayname" id="field_displayname"
+                [(ngModel)]="jerk.displayname" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.displayname?.dirty && editForm.controls.displayname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.displayname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.displayname?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.jerk.authStatus" for="field_authStatus">Auth Status</label>
+            <select class="form-control" name="authStatus" [(ngModel)]="jerk.authStatus" id="field_authStatus"  required>
+                <option value="A0">{{'jerkaeroApp.AuthStatusEnum.A0' | translate}}</option>
+                <option value="A1">{{'jerkaeroApp.AuthStatusEnum.A1' | translate}}</option>
+                <option value="A2">{{'jerkaeroApp.AuthStatusEnum.A2' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.authStatus?.dirty && editForm.controls.authStatus?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.authStatus?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        
+         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.wechat" for="field_wechat">Wechat</label>
+            <input type="text" class="form-control" name="wechat" id="field_wechat"
+                [(ngModel)]="jerk.preference.wechat" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.wechat?.dirty && editForm.controls.wechat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.wechat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.wechat?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="jerk.preference.address" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.address?.dirty && editForm.controls.address?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.address?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.address?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+           <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+       </button>
+    
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

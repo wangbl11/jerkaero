@@ -1,12 +1,20 @@
 {
     "global": {
-        "title": "Jerkaero",
+        "title": "Jerkaero Admin Console",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Entities",
+                "main": "Business",
+                "jerkGuoyiSuffix": "Jerk",
+                "registrationGuoyiSuffix": "Registration",
+                "preferenceGuoyiSuffix": "Preference",
+                "mailboxGuoyiSuffix": "Mailbox",
+                "tagGuoyiSuffix": "Tag",
+                "settingGuoyiSuffix": "Setting",
+                "footprintGuoyiSuffix": "Footprint",
+                "globalSettingGuoyiSuffix": "Global Setting",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -96,7 +104,8 @@
             "edit": "Edit",
             "open": "Open",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "register": "Register"
         },
         "detail": {
             "field": "Field",
@@ -129,5 +138,5 @@
         "emailexists": "Email is already in use!",
         "idexists": "A new {{ entityName }} cannot already have an ID"
     },
-    "footer": "This is your footer"
+    "footer": "Copyright: GuoYi Aerospace Corp."
 }

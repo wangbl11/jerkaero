@@ -1,0 +1,68 @@
+<div *ngIf="jerk">
+    <h2><span jhiTranslate="jerkaeroApp.jerk.detail.title">Jerk</span> {{jerk.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jerkaeroApp.jerk.username">Username</span></dt>
+        <dd>
+            <span>{{jerk.username}}</span>
+        </dd>
+        <!-- 
+        <dt><span jhiTranslate="jerkaeroApp.jerk.passwd">Passwd</span></dt>
+        <dd>
+            <span>{{jerk.passwd}}</span>
+        </dd>
+         -->
+        <dt><span jhiTranslate="jerkaeroApp.jerk.displayname">Displayname</span></dt>
+        <dd>
+            <span>{{jerk.displayname}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.jerk.authStatus">Auth Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'jerkaeroApp.AuthStatusEnum.' + jerk.authStatus}}">{{jerk.authStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.jerk.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{jerk.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.jerk.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{jerk.modifiedDate | date:'mediumDate'}}</span>
+        </dd>
+        <!-- 
+        <dt><span jhiTranslate="jerkaeroApp.jerk.jerkInfo">Jerk Info</span></dt>
+        <dd>
+            <div *ngIf="jerk.jerkInfo">
+                <a [routerLink]="['/registration-guoyi-suffix', jerk.jerkInfo?.id]">{{jerk.jerkInfo?.id}}</a>
+            </div>
+        </dd>
+         
+        <dt><span jhiTranslate="jerkaeroApp.jerk.preference">Preference</span></dt>
+        <dd>
+            <div *ngIf="jerk.preference">
+                <a [routerLink]="['/preference-guoyi-suffix', jerk.preference?.id]">{{jerk.preference?.id}}</a>
+            </div>
+        </dd>
+        -->
+        <dt><span jhiTranslate="jerkaeroApp.preference.wechat">Wechat</span></dt>
+        <dd>
+            <span>{{jerk.preference.wechat}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.preference.address">Address</span></dt>
+        <dd>
+            <span>{{jerk.preference.address}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/jerk-guoyi-suffix/'+ jerk.id + '/edit' ]"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,10 @@
+{
+    "jerkaeroApp": {
+        "AuthStatusEnum" : {
+            "null": "",
+            "A0": "未認證",
+            "A1": "已拒絕",
+            "A2": "已認證"
+        }
+    }
+}

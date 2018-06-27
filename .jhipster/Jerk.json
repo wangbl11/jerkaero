@@ -1,0 +1,94 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "jerkInfo",
+            "otherEntityName": "registration",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "jerk"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "preference",
+            "otherEntityName": "preference",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "jerk"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "inbox",
+            "otherEntityName": "mailbox",
+            "otherEntityRelationshipName": "jerk"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "outbox",
+            "otherEntityName": "mailbox",
+            "otherEntityRelationshipName": "jerk"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "favorites",
+            "otherEntityName": "footprint",
+            "otherEntityRelationshipName": "jerk"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "username",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "passwd",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "displayname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "authStatus",
+            "fieldType": "AuthStatusEnum",
+            "fieldValues": "A0,A1,A2",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180608234209",
+    "entityTableName": "jerk",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "guoyiSuffix"
+}

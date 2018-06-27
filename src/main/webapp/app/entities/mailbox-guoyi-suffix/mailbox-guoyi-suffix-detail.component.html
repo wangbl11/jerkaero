@@ -1,0 +1,70 @@
+
+<div *ngIf="mailbox">
+    <h2><span jhiTranslate="jerkaeroApp.mailbox.detail.title">Mailbox</span> {{mailbox.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.sendId">Send Id</span></dt>
+        <dd>
+            <span>{{mailbox.sendId}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.receiverId">Receiver Id</span></dt>
+        <dd>
+            <span>{{mailbox.receiverId}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.msgType">Msg Type</span></dt>
+        <dd>
+            <span>{{mailbox.msgType}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.title">Title</span></dt>
+        <dd>
+            <span>{{mailbox.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.mcontent">Mcontent</span></dt>
+        <dd>
+            <span>{{mailbox.mcontent}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.sourceId">Source Id</span></dt>
+        <dd>
+            <span>{{mailbox.sourceId}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{mailbox.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.readDate">Read Date</span></dt>
+        <dd>
+            <span>{{mailbox.readDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.anonymous">Anonymous</span></dt>
+        <dd>
+            <span>{{mailbox.anonymous}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.jerk">Jerk</span></dt>
+        <dd>
+            <div *ngIf="mailbox.jerk">
+                <a [routerLink]="['/jerk-guoyi-suffix', mailbox.jerk?.id]">{{mailbox.jerk?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.mailbox.jerk">Jerk</span></dt>
+        <dd>
+            <div *ngIf="mailbox.jerk">
+                <a [routerLink]="['/jerk-guoyi-suffix', mailbox.jerk?.id]">{{mailbox.jerk?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'mailbox-guoyi-suffix/'+ mailbox.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

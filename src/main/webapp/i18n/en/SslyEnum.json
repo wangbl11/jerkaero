@@ -1,0 +1,15 @@
+{
+    "jerkaeroApp": {
+        "AgeEnum" : {
+            "null": "",
+            "A1": "Related Technologies",
+            "A2": "Manifacture",
+            "A3": "Usage",
+            "A4": "Space outside",
+            "A5": "Development",
+            "A6": "Sales",
+            "A7": "Service",
+            "OTHER":"Other"
+        }
+    }
+}

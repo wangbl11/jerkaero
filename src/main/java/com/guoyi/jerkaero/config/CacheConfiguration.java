@@ -41,6 +41,17 @@ public class CacheConfiguration {
             cm.createCache(com.guoyi.jerkaero.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(com.guoyi.jerkaero.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
             cm.createCache(com.guoyi.jerkaero.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Jerk.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Registration.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Jerk.class.getName() + ".inboxes", jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Jerk.class.getName() + ".outboxes", jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Jerk.class.getName() + ".favorites", jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Preference.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Mailbox.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Tag.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Setting.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Footprint.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.GlobalSetting.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

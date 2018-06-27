@@ -1,0 +1,9 @@
+{
+    "jerkaeroApp": {
+        "StatusEnum" : {
+            "null": "",
+            "OFFLINE": "offline",
+            "ONLINE": "online"
+        }
+    }
+}

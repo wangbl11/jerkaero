@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="songjian (generated)" id="1529406575070-1">
+      <createTable tableName="global_setting">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="global_settingPK"/>
+         </column>
+         <column name="created_date" type="TINYBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="defvalue" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="modified_date" type="TINYBLOB"/>
+         <column name="name" type="VARCHAR(100)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jhi_type" type="INT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jhi_value" type="VARCHAR(200)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-2">
+      <addColumn tableName="jerk">
+         <column name="jerk_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-3">
+      <addColumn tableName="jerk">
+         <column name="jerk_info_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-4">
+      <addUniqueConstraint columnNames="jerk_id"
+                           constraintName="UC_JERKJERK_ID_COL"
+                           tableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-5">
+      <addUniqueConstraint columnNames="jerk_info_id"
+                           constraintName="UC_JERKJERK_INFO_ID_COL"
+                           tableName="jerk"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-6">
+      <addForeignKeyConstraint baseColumnNames="jerk_id"
+                               baseTableName="jerk"
+                               constraintName="FKm2xraar7mljtjofi7ex4b0cnx"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="preference"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-7">
+      <addForeignKeyConstraint baseColumnNames="jerk_info_id"
+                               baseTableName="jerk"
+                               constraintName="FKsauyivwffhrd9s1g1db9iwydv"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="registration"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-8">
+      <dropUniqueConstraint constraintName="uk_setting_name" tableName="setting"/>
+   </changeSet>
+   <changeSet author="songjian (generated)" id="1529406575070-9">
+      <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="tag"/>
+   </changeSet>
+</databaseChangeLog>

@@ -1,12 +1,20 @@
 {
     "global": {
-        "title": "Jerkaero",
+        "title": "空天界管理平台",
         "browsehappy": "您目前使用<strong>过于老旧</strong>的浏览器, 建议您<a href=\"http://browsehappy.com/?locale=en\">升级浏览器</a>让您有更佳的上网体验.",
         "menu": {
             "home": "首页",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "数据",
+                "main": "业务",
+                "jerkGuoyiSuffix": "极客",
+                "registrationGuoyiSuffix": "报名",
+                "preferenceGuoyiSuffix": "Preference",
+                "mailboxGuoyiSuffix": "邮箱",
+                "tagGuoyiSuffix": "标签",
+                "settingGuoyiSuffix": "設置",
+                "footprintGuoyiSuffix": "Footprint",
+                "globalSettingGuoyiSuffix": "Global Setting",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -96,7 +104,8 @@
             "edit": "编辑",
             "open": "Open",
             "save": "保存",
-            "view": "查看"
+            "view": "查看",
+            "register": "报名"
         },
         "detail": {
             "field": "字段",
@@ -128,5 +137,5 @@
         "emailexists": "该邮箱已被使用!",
         "idexists": "新建的 {{entityName}} 不能包含ID"
     },
-    "footer": "这里是页脚"
+    "footer": "版权：国翊科技有限公司 2018"
 }

@@ -1,0 +1,28 @@
+
+{
+    "jerkaeroApp": {
+        "tag" : {
+            "home": {
+                "title": "標籤",
+                "createLabel": "創建",
+                "createOrEditLabel": "建立或編輯 標籤",
+                "search": "搜尋 標籤"
+            },
+            "created": "新的 標籤 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 標籤 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 標籤 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 標籤 {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "標籤"
+            },
+            "name": "名稱",
+            "type": "類型",
+            "status": "狀態",
+            "weight": "權重",
+            "createdDate": "創建日期",
+            "modifiedDate": "最後修改日期"
+        }
+    }
+}

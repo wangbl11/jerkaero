@@ -1,0 +1,28 @@
+
+{
+    "jerkaeroApp": {
+        "setting" : {
+            "home": {
+                "title": "設置",
+                "createLabel": "創建",
+                "createOrEditLabel": "建立或編輯 設置",
+                "search": "搜尋 設置"
+            },
+            "created": "新的 設置 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 設置 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 設置 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 設置 {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "設置"
+            },
+            "name": "名稱",
+            "type": "類型",
+            "value": "值",
+            "defvalue": "默認值",
+            "createdDate": "創建時間",
+            "modifiedDate": "修改時間"
+        }
+    }
+}

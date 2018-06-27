@@ -1,0 +1,44 @@
+
+<div *ngIf="footprint">
+    <h2><span jhiTranslate="jerkaeroApp.footprint.detail.title">Footprint</span> {{footprint.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jerkaeroApp.footprint.sourceId">Source Id</span></dt>
+        <dd>
+            <span>{{footprint.sourceId}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.footprint.sourceType">Source Type</span></dt>
+        <dd>
+            <span>{{footprint.sourceType}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.footprint.readerId">Reader Id</span></dt>
+        <dd>
+            <span>{{footprint.readerId}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.footprint.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{footprint.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.footprint.jerk">Jerk</span></dt>
+        <dd>
+            <div *ngIf="footprint.jerk">
+                <a [routerLink]="['/jerk-guoyi-suffix', footprint.jerk?.id]">{{footprint.jerk?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'footprint-guoyi-suffix/'+ footprint.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

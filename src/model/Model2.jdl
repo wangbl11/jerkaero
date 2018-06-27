@@ -1,0 +1,12 @@
+entity GlobalSetting {
+	name String required maxlength(100),
+	type Integer required ,
+	value String required maxlength(200),
+	defvalue String required maxlength(200),
+	createdDate ZonedDateTime required,
+	modifiedDate ZonedDateTime
+}
+paginate GlobalSetting with infinite-scroll
+
+// Set an angular suffix
+angularSuffix * with guoyiSuffix

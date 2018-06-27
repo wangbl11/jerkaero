@@ -1,0 +1,65 @@
+
+{
+    "jerkaeroApp": {
+        "jerkInfo" : {
+            "home": {
+                "title": "Jerk Infos",
+                "createLabel": "建立一筆新的 Jerk Info",
+                "createOrEditLabel": "建立或編輯 Jerk Info",
+                "search": "搜尋 Jerk Info"
+            },
+            "created": "新的 Jerk Info 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Jerk Info 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Jerk Info 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 Jerk Info {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Jerk Info"
+            },
+            "dwqc": "Dwqc",
+            "hxcpmc": "Hxcpmc",
+            "zztjdw": "Zztjdw",
+            "dwhgrdz": "Dwhgrdz",
+            "szqylx": "Szqylx",
+            "ssly": "Ssly",
+            "gscpjj": "Gscpjj",
+            "mbkhsc": "Mbkhsc",
+            "dqzykh": "Dqzykh",
+            "gnwhjjx": "Gnwhjjx",
+            "zljs": "Zljs",
+            "hxjsly": "Hxjsly",
+            "kjcgzh": "Kjcgzh",
+            "jmlyqk": "Jmlyqk",
+            "jscsd": "Jscsd",
+            "jzmsylqk": "Jzmsylqk",
+            "jzysjs": "Jzysjs",
+            "fzrdh": "Fzrdh",
+            "xb": "Xb",
+            "lxfs": "Lxfs",
+            "email": "Email",
+            "fzrnl": "Fzrnl",
+            "tdpjnl": "Tdpjnl",
+            "gjrcs": "Gjrcs",
+            "sfgjrzgxjsqy": "Sfgjrzgxjsqy",
+            "tdysjs": "Tdysjs",
+            "xycz": "Xycz",
+            "wlxwhdzclx": "Wlxwhdzclx",
+            "wlxwhdzclx1": "Wlxwhdzclx 1",
+            "sfxyxc": "Sfxyxc",
+            "rzjhgkfw": "Rzjhgkfw",
+            "rzmb": "Rzmb",
+            "lxrzw": "Lxrzw",
+            "lxdh": "Lxdh",
+            "lxyx": "Lxyx",
+            "lxdz": "Lxdz",
+            "ssly1": "Ssly 1",
+            "createdDate": "Created Date",
+            "modifiedDate": "Modified Date",
+            "help": {
+                "jscsd": "创新",
+                "jzmsylqk": "创业"
+            }
+        }
+    }
+}

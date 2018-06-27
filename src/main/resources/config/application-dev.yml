@@ -22,7 +22,7 @@ logging:
 spring:
     profiles:
         active: dev
-        include: swagger
+        include: swagger,no-liquibase
     devtools:
         restart:
             enabled: true
@@ -34,7 +34,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/jerkaero?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password:
+        password: rootpassword
         hikari:
             data-source-properties:
                 cachePrepStmts: true

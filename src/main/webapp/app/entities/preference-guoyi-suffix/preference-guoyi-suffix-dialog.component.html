@@ -1,0 +1,77 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPreferenceLabel" jhiTranslate="jerkaeroApp.preference.home.createOrEditLabel">Create or edit a Preference</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!preference.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="preference.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.wechat" for="field_wechat">Wechat</label>
+            <input type="text" class="form-control" name="wechat" id="field_wechat"
+                [(ngModel)]="preference.wechat" required/>
+            <div [hidden]="!(editForm.controls.wechat?.dirty && editForm.controls.wechat?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.wechat?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="preference.address" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.imageUrl" for="field_imageUrl">Image Url</label>
+            <input type="text" class="form-control" name="imageUrl" id="field_imageUrl"
+                [(ngModel)]="preference.imageUrl" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.lang" for="field_lang">Lang</label>
+            <input type="text" class="form-control" name="lang" id="field_lang"
+                [(ngModel)]="preference.lang" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.createdDate" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="preference.createdDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.createdDate?.dirty && editForm.controls.createdDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.createdDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.preference.modifiedDate" for="field_modifiedDate">Modified Date</label>
+            <div class="input-group">
+                <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" ngbDatepicker  #modifiedDateDp="ngbDatepicker" [(ngModel)]="preference.modifiedDate"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="modifiedDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

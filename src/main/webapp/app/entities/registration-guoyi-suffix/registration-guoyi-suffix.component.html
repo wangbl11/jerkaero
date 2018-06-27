@@ -1,0 +1,149 @@
+<div>
+    <h2>
+        <span jhiTranslate="jerkaeroApp.registration.home.title">Registrations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-registration-guoyi-suffix" [routerLink]="['/', { outlets: { popup: ['registration-guoyi-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="jerkaeroApp.registration.home.createLabel">
+            Create new Registration
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'jerkaeroApp.registration.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="registrations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.registType">Regist Type</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.dwqc">Dwqc</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.hxcpmc">Hxcpmc</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.zztjdw">Zztjdw</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.dwhgrdz">Dwhgrdz</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.szqylx">Szqylx</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.ssly">Ssly</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.gscpjj">Gscpjj</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.mbkhsc">Mbkhsc</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.dqzykh">Dqzykh</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.gnwhjjx">Gnwhjjx</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.zljs">Zljs</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.hxjsly">Hxjsly</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.kjcgzh">Kjcgzh</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.jmlyqk">Jmlyqk</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.jscsd">Jscsd</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.jzmsylqk">Jzmsylqk</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.jzysjs">Jzysjs</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.fzrdh">Fzrdh</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.xb">Xb</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.lxfs">Lxfs</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.email">Email</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.fzrnl">Fzrnl</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.tdpjnl">Tdpjnl</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.gjrcs">Gjrcs</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.sfgjrzgxjsqy">Sfgjrzgxjsqy</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.tdysjs">Tdysjs</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.xycz">Xycz</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.wlxwhdzclx">Wlxwhdzclx</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.wlxwhdzclx1">Wlxwhdzclx 1</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.sfxyxc">Sfxyxc</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.rzjhgkfw">Rzjhgkfw</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.rzmb">Rzmb</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.lxrzw">Lxrzw</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.lxdh">Lxdh</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.lxyx">Lxyx</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.lxdz">Lxdz</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.ssly1">Ssly 1</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.createdDate">Created Date</span></th>
+            <th><span jhiTranslate="jerkaeroApp.registration.modifiedDate">Modified Date</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let registration of registrations ;trackBy: trackId">
+                <td><a [routerLink]="['../registration-guoyi-suffix', registration.id ]">{{registration.id}}</a></td>
+                <td>{{registration.registType}}</td>
+                <td>{{registration.dwqc}}</td>
+                <td>{{registration.hxcpmc}}</td>
+                <td>{{registration.zztjdw}}</td>
+                <td>{{registration.dwhgrdz}}</td>
+                <td>{{registration.szqylx}}</td>
+                <td>{{registration.ssly}}</td>
+                <td>{{registration.gscpjj}}</td>
+                <td>{{registration.mbkhsc}}</td>
+                <td>{{registration.dqzykh}}</td>
+                <td>{{registration.gnwhjjx}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.Decision.' + registration.zljs}}">{{registration.zljs}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.HxjslyEnum.' + registration.hxjsly}}">{{registration.hxjsly}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.KjcgzhEnum.' + registration.kjcgzh}}">{{registration.kjcgzh}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.JmlyqkEnum.' + registration.jmlyqk}}">{{registration.jmlyqk}}</td>
+                <td>{{registration.jscsd}}</td>
+                <td>{{registration.jzmsylqk}}</td>
+                <td>{{registration.jzysjs}}</td>
+                <td>{{registration.fzrdh}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.XbEnum.' + registration.xb}}">{{registration.xb}}</td>
+                <td>{{registration.lxfs}}</td>
+                <td>{{registration.email}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.AgeEnum.' + registration.fzrnl}}">{{registration.fzrnl}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.AgeEnum.' + registration.tdpjnl}}">{{registration.tdpjnl}}</td>
+                <td>{{registration.gjrcs}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.Decision.' + registration.sfgjrzgxjsqy}}">{{registration.sfgjrzgxjsqy}}</td>
+                <td>{{registration.tdysjs}}</td>
+                <td>{{registration.xycz}}</td>
+                <td>{{registration.wlxwhdzclx}}</td>
+                <td>{{registration.wlxwhdzclx1}}</td>
+                <td>{{registration.sfxyxc}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.RzjhgkfwEnum.' + registration.rzjhgkfw}}">{{registration.rzjhgkfw}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.RzmbEnum.' + registration.rzmb}}">{{registration.rzmb}}</td>
+                <td>{{registration.lxrzw}}</td>
+                <td>{{registration.lxdh}}</td>
+                <td>{{registration.lxyx}}</td>
+                <td>{{registration.lxdz}}</td>
+                <td>{{registration.ssly1}}</td>
+                <td>{{registration.createdDate | date:'mediumDate'}}</td>
+                <td>{{registration.modifiedDate | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../registration-guoyi-suffix', registration.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'registration-guoyi-suffix/'+ registration.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'registration-guoyi-suffix/'+ registration.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+    "jerkaeroApp": {
+        "SettingTypeEnum" : {
+            "null": "",
+            "STRING": "STRING",
+            "INTEGER": "INTEGER",
+            "BOOL": "BOOL"
+        }
+    }
+}

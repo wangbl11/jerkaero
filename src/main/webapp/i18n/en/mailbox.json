@@ -1,0 +1,31 @@
+
+{
+    "jerkaeroApp": {
+        "mailbox" : {
+            "home": {
+                "title": "Mailboxes",
+                "createLabel": "Create a new Mailbox",
+                "createOrEditLabel": "Create or edit a Mailbox",
+                "search": "Search for Mailbox"
+            },
+            "created": "A new Mailbox is created with identifier {{ param }}",
+            "updated": "A Mailbox is updated with identifier {{ param }}",
+            "deleted": "A Mailbox is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Mailbox {{ id }}?"
+            },
+            "detail": {
+                "title": "Mailbox"
+            },
+            "sendId": "Send Id",
+            "receiverId": "Receiver Id",
+            "msgType": "Msg Type",
+            "title": "Title",
+            "mcontent": "Mcontent",
+            "sourceId": "Source Id",
+            "createdDate": "Created Date",
+            "readDate": "Read Date",
+            "anonymous": "Anonymous"
+        }
+    }
+}

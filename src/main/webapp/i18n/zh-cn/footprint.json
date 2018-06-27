@@ -1,0 +1,27 @@
+
+{
+    "jerkaeroApp": {
+        "footprint" : {
+            "home": {
+                "title": "Footprints",
+                "createLabel": "创建新 Footprint",
+                "createOrEditLabel": "创建或编辑 Footprint",
+                "search": "查找 Footprint"
+            },
+            "created": "Footprint {{ param }} 创建成功",
+            "updated": "Footprint {{ param }} 更新成功",
+            "deleted": "Footprint {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Footprint {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Footprint"
+            },
+            "sourceId": "Source Id",
+            "sourceType": "Source Type",
+            "readerId": "Reader Id",
+            "createdDate": "Created Date",
+            "jerk": "Jerk"
+        }
+    }
+}

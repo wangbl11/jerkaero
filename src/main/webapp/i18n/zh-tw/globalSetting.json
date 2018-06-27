@@ -1,0 +1,28 @@
+
+{
+    "jerkaeroApp": {
+        "globalSetting" : {
+            "home": {
+                "title": "Global Settings",
+                "createLabel": "建立一筆新的 Global Setting",
+                "createOrEditLabel": "建立或編輯 Global Setting",
+                "search": "搜尋 Global Setting"
+            },
+            "created": "新的 Global Setting 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Global Setting 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Global Setting 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 Global Setting {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Global Setting"
+            },
+            "name": "Name",
+            "type": "Type",
+            "value": "Value",
+            "defvalue": "Defvalue",
+            "createdDate": "Created Date",
+            "modifiedDate": "Modified Date"
+        }
+    }
+}

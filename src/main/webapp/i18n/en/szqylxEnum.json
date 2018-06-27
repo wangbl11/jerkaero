@@ -1,0 +1,11 @@
+{
+    "jerkaeroApp": {
+        "AgeEnum" : {
+            "null": "",
+            "A1": "Personal or Group",
+            "A2": "less than 1 year",
+            "A3": "1-3 years",
+            "A4": "greater than 3 years"
+        }
+    }
+}

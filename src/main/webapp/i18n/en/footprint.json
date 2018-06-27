@@ -1,0 +1,27 @@
+
+{
+    "jerkaeroApp": {
+        "footprint" : {
+            "home": {
+                "title": "Footprints",
+                "createLabel": "Create a new Footprint",
+                "createOrEditLabel": "Create or edit a Footprint",
+                "search": "Search for Footprint"
+            },
+            "created": "A new Footprint is created with identifier {{ param }}",
+            "updated": "A Footprint is updated with identifier {{ param }}",
+            "deleted": "A Footprint is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Footprint {{ id }}?"
+            },
+            "detail": {
+                "title": "Footprint"
+            },
+            "sourceId": "Source Id",
+            "sourceType": "Source Type",
+            "readerId": "Reader Id",
+            "createdDate": "Created Date",
+            "jerk": "Jerk"
+        }
+    }
+}

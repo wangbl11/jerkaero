@@ -1,0 +1,9 @@
+{
+    "jerkaeroApp": {
+        "XbEnum" : {
+            "null": "",
+            "MAN": "MAN",
+            "WOMAN": "WOMAN"
+        }
+    }
+}

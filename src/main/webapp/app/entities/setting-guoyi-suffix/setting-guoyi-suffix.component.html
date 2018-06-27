@@ -1,0 +1,81 @@
+<div>
+    <h2>
+        <span jhiTranslate="jerkaeroApp.setting.home.title">Settings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-setting-guoyi-suffix" [routerLink]="['/', { outlets: { popup: ['setting-guoyi-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="jerkaeroApp.setting.home.createLabel">
+            Create new Setting
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'jerkaeroApp.setting.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="settings">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="jerkaeroApp.setting.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="jerkaeroApp.setting.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="value"><span jhiTranslate="jerkaeroApp.setting.value">Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="defvalue"><span jhiTranslate="jerkaeroApp.setting.defvalue">Defvalue</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="jerkaeroApp.setting.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="modifiedDate"><span jhiTranslate="jerkaeroApp.setting.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let setting of settings ;trackBy: trackId">
+                <td><a [routerLink]="['../setting-guoyi-suffix', setting.id ]">{{setting.id}}</a></td>
+                <td>{{setting.name}}</td>
+                <td jhiTranslate="{{'jerkaeroApp.SettingTypeEnum.' + setting.type}}">{{setting.type}}</td>
+                <td>{{setting.value}}</td>
+                <td>{{setting.defvalue}}</td>
+                <td>{{setting.createdDate | date:'mediumDate'}}</td>
+                <td>{{setting.modifiedDate | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../setting-guoyi-suffix', setting.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'setting-guoyi-suffix/'+ setting.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'setting-guoyi-suffix/'+ setting.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

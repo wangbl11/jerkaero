@@ -1,0 +1,46 @@
+
+<div *ngIf="setting">
+    <h2><span jhiTranslate="jerkaeroApp.setting.detail.title">Setting</span> {{setting.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jerkaeroApp.setting.name">Name</span></dt>
+        <dd>
+            <span>{{setting.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.setting.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'jerkaeroApp.SettingTypeEnum.' + setting.type}}">{{setting.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.setting.value">Value</span></dt>
+        <dd>
+            <span>{{setting.value}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.setting.defvalue">Defvalue</span></dt>
+        <dd>
+            <span>{{setting.defvalue}}</span>
+        </dd>
+          <dt><span jhiTranslate="jerkaeroApp.setting.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{setting.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.setting.modifiedDate">Modified Date</span></dt>
+        <dd>
+            <span>{{setting.modifiedDate | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'setting-guoyi-suffix/'+ setting.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

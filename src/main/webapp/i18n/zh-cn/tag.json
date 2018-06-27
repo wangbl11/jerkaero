@@ -1,0 +1,28 @@
+
+{
+    "jerkaeroApp": {
+        "tag" : {
+            "home": {
+                "title": "标签",
+                "createLabel": "创建",
+                "createOrEditLabel": "创建或编辑 标签",
+                "search": "查找 标签"
+            },
+            "created": "标签 {{ param }} 创建成功",
+            "updated": "标签 {{ param }} 更新成功",
+            "deleted": "标签 {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 标签 {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "标签"
+            },
+            "name": "名称",
+            "type": "类型",
+            "status": "状态",
+            "weight": "权重",
+            "createdDate": "创建日期",
+            "modifiedDate": "修改日期"
+        }
+    }
+}
