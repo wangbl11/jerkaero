@@ -57,7 +57,11 @@
             "lxdz": "联系地址",
             "ssly1": "具体描述",
             "createdDate": "創建時間",
-            "modifiedDate": "修改時間"
+            "modifiedDate": "修改時間",
+            "offline":"下線",
+            "online":"發布",
+            "offlined":"未發布",
+            "onlined":"已發布"
         }
     }
 }

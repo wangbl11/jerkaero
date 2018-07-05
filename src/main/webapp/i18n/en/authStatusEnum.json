@@ -3,8 +3,7 @@
         "AuthStatusEnum" : {
             "null": "",
             "A0": "Not Proved",
-            "A1": "Reject",
-            "A2": "Approved"
+            "A1": "Approved"
         }
     }
 }

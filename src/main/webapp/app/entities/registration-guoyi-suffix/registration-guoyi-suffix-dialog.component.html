@@ -1,9 +1,11 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form *ngIf="registration" name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
         <h4 class="modal-title" id="myRegistrationLabel" jhiTranslate="jerkaeroApp.registration.home.createOrEditLabel">Create or edit a Registration</h4>
+       <!-- 
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
+                 -->
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -14,8 +16,14 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.registType" for="field_registType">Regist Type</label>
+            <!-- 
             <input type="number" class="form-control" name="registType" id="field_registType"
                 [(ngModel)]="registration.registType" required/>
+                -->
+            <select class="form-control" name="registType" [(ngModel)]="registration.registType" id="field_registType" required>
+                <option value="A1">{{'jerkaeroApp.RegisterEnum.A1' | translate}}</option>
+                <option value="A2">{{'jerkaeroApp.RegisterEnum.A2' | translate}}</option>
+            </select>
             <div [hidden]="!(editForm.controls.registType?.dirty && editForm.controls.registType?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.registType?.errors?.required" jhiTranslate="entity.validation.required">
@@ -79,8 +87,16 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.szqylx" for="field_szqylx">Szqylx</label>
+          <!-- 
             <input type="text" class="form-control" name="szqylx" id="field_szqylx"
                 [(ngModel)]="registration.szqylx" required/>
+                -->
+            <select class="form-control" name="szqylx" id="field_szqylx" [(ngModel)]="registration.szqylx" required>
+                <option value="A1">{{'jerkaeroApp.SzqylxEnum.A1' | translate}}</option>
+                <option value="A2">{{'jerkaeroApp.SzqylxEnum.A2' | translate}}</option>
+                <option value="A1">{{'jerkaeroApp.SzqylxEnum.A3' | translate}}</option>
+                <option value="A2">{{'jerkaeroApp.SzqylxEnum.A4' | translate}}</option>
+            </select>
             <div [hidden]="!(editForm.controls.szqylx?.dirty && editForm.controls.szqylx?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.szqylx?.errors?.required" jhiTranslate="entity.validation.required">
@@ -90,8 +106,14 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.ssly" for="field_ssly">Ssly</label>
+            <!-- 
             <input type="text" class="form-control" name="ssly" id="field_ssly"
                 [(ngModel)]="registration.ssly" required/>
+                -->
+            <select class="form-control" name="ssly" id="field_ssly" [(ngModel)]="registration.ssly" required>
+                <option value="A1">{{'jerkaeroApp.SslyEnum.A1' | translate}}</option>
+                <option value="A2">{{'jerkaeroApp.SslyEnum.A2' | translate}}</option>
+            </select>
             <div [hidden]="!(editForm.controls.ssly?.dirty && editForm.controls.ssly?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.ssly?.errors?.required" jhiTranslate="entity.validation.required">
@@ -99,10 +121,23 @@
                 </small>
             </div>
         </div>
+        
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.ssly1" for="field_ssly1">Ssly 1</label>
+            <input  class="form-control" name="ssly1" id="field_ssly1"
+                [(ngModel)]="registration.ssly1" maxlength="60"/>
+            <div [hidden]="!(editForm.controls.ssly1?.dirty && editForm.controls.ssly1?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ssly1?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.gscpjj" for="field_gscpjj">Gscpjj</label>
-            <input type="text" class="form-control" name="gscpjj" id="field_gscpjj"
-                [(ngModel)]="registration.gscpjj" required maxlength="360"/>
+            <textarea type="text" class="form-control" name="gscpjj" id="field_gscpjj"
+                [(ngModel)]="registration.gscpjj" required maxlength="360"></textarea>
             <div [hidden]="!(editForm.controls.gscpjj?.dirty && editForm.controls.gscpjj?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.gscpjj?.errors?.required" jhiTranslate="entity.validation.required">
@@ -132,8 +167,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.gnwhjjx" for="field_gnwhjjx">Gnwhjjx</label>
-            <input type="text" class="form-control" name="gnwhjjx" id="field_gnwhjjx"
-                [(ngModel)]="registration.gnwhjjx" maxlength="500"/>
+            <textarea type="text" class="form-control" name="gnwhjjx" id="field_gnwhjjx"
+                [(ngModel)]="registration.gnwhjjx" maxlength="500"></textarea>
             <div [hidden]="!(editForm.controls.gnwhjjx?.dirty && editForm.controls.gnwhjjx?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.gnwhjjx?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
@@ -210,11 +245,16 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
+        <!-- 盈利模式及目前盈利情况 -->
+        <div class="form-group" *ngIf="registration.registType=='A2'">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.jzmsylqk" for="field_jzmsylqk">Jzmsylqk</label>
-            <input type="text" class="form-control" name="jzmsylqk" id="field_jzmsylqk"
-                [(ngModel)]="registration.jzmsylqk" maxlength="500"/>
+            <textarea type="text" class="form-control" name="jzmsylqk" id="field_jzmsylqk"
+                [(ngModel)]="registration.jzmsylqk" maxlength="500"></textarea>
             <div [hidden]="!(editForm.controls.jzmsylqk?.dirty && editForm.controls.jzmsylqk?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.jzmsylqk?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.jzmsylqk?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
                    This field cannot be longer than 500 characters.
@@ -223,8 +263,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.jzysjs" for="field_jzysjs">Jzysjs</label>
-            <input type="text" class="form-control" name="jzysjs" id="field_jzysjs"
-                [(ngModel)]="registration.jzysjs" required maxlength="500"/>
+            <textarea type="text" class="form-control" name="jzysjs" id="field_jzysjs"
+                [(ngModel)]="registration.jzysjs" required maxlength="500"></textarea>
             <div [hidden]="!(editForm.controls.jzysjs?.dirty && editForm.controls.jzysjs?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.jzysjs?.errors?.required" jhiTranslate="entity.validation.required">
@@ -384,8 +424,14 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.wlxwhdzclx" for="field_wlxwhdzclx">Wlxwhdzclx</label>
+            <!-- 
             <input type="text" class="form-control" name="wlxwhdzclx" id="field_wlxwhdzclx"
                 [(ngModel)]="registration.wlxwhdzclx" required maxlength="36"/>
+                 -->
+            <div class="row">
+             <span *ngFor="let one of zclxArray" class="col-sm-6"><input name="{{'zclx'+one.key}}" id="{{'zclx'+one.key}}" type="checkbox" [(ngModel)]="one.state">{{'jerkaeroApp.ZclxEnum.'+one.key | translate}}</span>
+            </div>
+             
             <div [hidden]="!(editForm.controls.wlxwhdzclx?.dirty && editForm.controls.wlxwhdzclx?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.wlxwhdzclx?.errors?.required" jhiTranslate="entity.validation.required">
@@ -397,11 +443,15 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
+        <div  *ngIf="zclxArray[9].state" class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.wlxwhdzclx1" for="field_wlxwhdzclx1">Wlxwhdzclx 1</label>
             <input type="text" class="form-control" name="wlxwhdzclx1" id="field_wlxwhdzclx1"
-                [(ngModel)]="registration.wlxwhdzclx1" maxlength="100"/>
+                [(ngModel)]="registration.wlxwhdzclx1" required maxlength="100"/>
             <div [hidden]="!(editForm.controls.wlxwhdzclx1?.dirty && editForm.controls.wlxwhdzclx1?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.wlxwhdzclx1?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.wlxwhdzclx1?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
                    This field cannot be longer than 100 characters.
@@ -410,8 +460,13 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.sfxyxc" for="field_sfxyxc">Sfxyxc</label>
-            <input type="text" class="form-control" name="sfxyxc" id="field_sfxyxc"
+            <!--         
+             <input type="text" class="form-control" name="sfxyxc" id="field_sfxyxc"
                 [(ngModel)]="registration.sfxyxc" maxlength="100"/>
+            -->
+            <div class="row">
+             <span *ngFor="let one of sfxyxcArray" class="col-sm-6"><input name="{{'sfxyxc'+one.key}}" id="{{'sfxyxc'+one.key}}" type="checkbox" [(ngModel)]="one.state">{{'jerkaeroApp.SfxyxcEnum.'+one.key | translate}}</span>
+            </div>
             <div [hidden]="!(editForm.controls.sfxyxc?.dirty && editForm.controls.sfxyxc?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.sfxyxc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
@@ -419,15 +474,22 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="registration.registType=='A2'">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.rzjhgkfw" for="field_rzjhgkfw">Rzjhgkfw</label>
-            <select class="form-control" name="rzjhgkfw" [(ngModel)]="registration.rzjhgkfw" id="field_rzjhgkfw" >
+            <select class="form-control" name="rzjhgkfw" [(ngModel)]="registration.rzjhgkfw" id="field_rzjhgkfw"  required>
                 <option value="O1">{{'jerkaeroApp.RzjhgkfwEnum.O1' | translate}}</option>
                 <option value="O2">{{'jerkaeroApp.RzjhgkfwEnum.O2' | translate}}</option>
                 <option value="O3">{{'jerkaeroApp.RzjhgkfwEnum.O3' | translate}}</option>
             </select>
+            
+            <div [hidden]="!(editForm.controls.rzjhgkfw?.dirty && editForm.controls.rzjhgkfw?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.rzjhgkfw?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="registration.registType=='A2'">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.rzmb" for="field_rzmb">Rzmb</label>
             <select class="form-control" name="rzmb" [(ngModel)]="registration.rzmb" id="field_rzmb" >
                 <option value="R1">{{'jerkaeroApp.RzmbEnum.R1' | translate}}</option>
@@ -496,17 +558,8 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.ssly1" for="field_ssly1">Ssly 1</label>
-            <input type="text" class="form-control" name="ssly1" id="field_ssly1"
-                [(ngModel)]="registration.ssly1" maxlength="60"/>
-            <div [hidden]="!(editForm.controls.ssly1?.dirty && editForm.controls.ssly1?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.ssly1?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
-                   This field cannot be longer than 60 characters.
-                </small>
-            </div>
-        </div>
+
+        <!-- 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.registration.createdDate" for="field_createdDate">Created Date</label>
             <div class="input-group">
@@ -533,10 +586,10 @@
                 </span>
             </div>
         </div>
-
+   -->
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+        <button type="button" class="btn btn-secondary" (click)="previousState()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">

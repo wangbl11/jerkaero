@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import com.guoyi.jerkaero.domain.enumeration.Decision;
@@ -44,7 +45,7 @@ public class Registration implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToOne(fetch = FetchType.LAZY,mappedBy = "preference")
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "jerkInfo")
     private Jerk jerk;
 
     @NotNull
@@ -252,12 +253,14 @@ public class Registration implements Serializable {
     @Column(name = "ssly_1", length = 60)
     private String ssly1;
 
-    @NotNull
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
     @Column(name = "modified_date")
-    private LocalDate modifiedDate;
+    private LocalDateTime modifiedDate;
+    
+    @Column(name="fbzt")
+    private Integer fbzt;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -776,34 +779,49 @@ public class Registration implements Serializable {
         this.ssly1 = ssly1;
     }
 
-    public LocalDate getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Registration createdDate(LocalDate createdDate) {
+    public Registration createdDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDate getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public Registration modifiedDate(LocalDate modifiedDate) {
+    public Registration modifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+    
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
-    @Override
+    public Integer getFbzt() {
+		return fbzt;
+	}
+    
+    public Registration fbzt(Integer fbzt) {
+    	this.fbzt=fbzt;
+    	return this;
+    }
+
+	public void setFbzt(Integer fbzt) {
+		this.fbzt = fbzt;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -867,6 +885,7 @@ public class Registration implements Serializable {
             ", ssly1='" + getSsly1() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", modifiedDate='" + getModifiedDate() + "'" +
+            ", fbzt='" + getFbzt() + "'" +
             "}";
     }
 }

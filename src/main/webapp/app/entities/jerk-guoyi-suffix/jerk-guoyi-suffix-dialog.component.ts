@@ -33,6 +33,7 @@ export class JerkGuoyiSuffixDialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.isSaving = false;
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
@@ -40,12 +41,10 @@ export class JerkGuoyiSuffixDialogComponent implements OnInit, OnDestroy {
     }
 
     load(id) {
-        console.log('~~~~~~~~~~~~~');
-        console.log(id);
         this.jerkService.find(id)
             .subscribe((jerkResponse: HttpResponse<JerkGuoyiSuffix>) => {
                 this.jerk = jerkResponse.body;
-                console.log(this.jerk);
+               // console.log(this.jerk);
             });
     }
     previousState() {

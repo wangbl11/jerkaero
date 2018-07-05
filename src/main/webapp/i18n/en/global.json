@@ -105,7 +105,9 @@
             "open": "Open",
             "save": "Save",
             "view": "View",
-            "register": "Register"
+            "register": "Register",
+            "online":"Online",
+            "offline":"Offline"
         },
         "detail": {
             "field": "Field",

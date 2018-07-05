@@ -16,7 +16,8 @@ export class RegistrationGuoyiSuffixDetailComponent implements OnInit, OnDestroy
     registration: RegistrationGuoyiSuffix;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
-
+    sfxyxcArray :any[]=[];
+    zclxArray: any[]=[];
     constructor(
         private eventManager: JhiEventManager,
         private registrationService: RegistrationGuoyiSuffixService,
@@ -35,6 +36,17 @@ export class RegistrationGuoyiSuffixDetailComponent implements OnInit, OnDestroy
         this.registrationService.find(id)
             .subscribe((registrationResponse: HttpResponse<RegistrationGuoyiSuffix>) => {
                 this.registration = registrationResponse.body;
+                let _v=JSON.parse(this.registration.sfxyxc);
+                for (let i=0;i<4;i++){
+                   if (_v[i]==1)
+                     this.sfxyxcArray.push(i+1);
+                }
+                _v=JSON.parse(this.registration.wlxwhdzclx);
+                for (let i=0;i<10;i++){
+                    if (_v[i]==1)
+                       this.zclxArray.push(i+1);
+                }
+                //this.registration.gscpjj=this.registration.gscpjj.replace('\n','<br />');
             });
     }
     previousState() {

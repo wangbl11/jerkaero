@@ -19,7 +19,9 @@ export class RegistrationGuoyiSuffixService {
     constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
 
     create(registration: RegistrationGuoyiSuffix): Observable<EntityResponseType> {
+        console.log(registration);
         const copy = this.convert(registration);
+        
         return this.http.post<RegistrationGuoyiSuffix>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
@@ -70,10 +72,11 @@ export class RegistrationGuoyiSuffixService {
      */
     private convertItemFromServer(registration: RegistrationGuoyiSuffix): RegistrationGuoyiSuffix {
         const copy: RegistrationGuoyiSuffix = Object.assign({}, registration);
-        copy.createdDate = this.dateUtils
-            .convertLocalDateFromServer(registration.createdDate);
-        copy.modifiedDate = this.dateUtils
-            .convertLocalDateFromServer(registration.modifiedDate);
+        //copy.gscpjj=copy.gscpjj.replace('\n','&lt;br/&gt;');
+        // copy.createdDate = this.dateUtils
+        //     .convertLocalDateFromServer(registration.createdDate);
+        // copy.modifiedDate = this.dateUtils
+        //     .convertLocalDateFromServer(registration.modifiedDate);
         return copy;
     }
 
@@ -82,10 +85,10 @@ export class RegistrationGuoyiSuffixService {
      */
     private convert(registration: RegistrationGuoyiSuffix): RegistrationGuoyiSuffix {
         const copy: RegistrationGuoyiSuffix = Object.assign({}, registration);
-        copy.createdDate = this.dateUtils
-            .convertLocalDateToServer(registration.createdDate);
-        copy.modifiedDate = this.dateUtils
-            .convertLocalDateToServer(registration.modifiedDate);
+        // copy.createdDate = this.dateUtils
+        //     .convertLocalDateToServer(registration.createdDate);
+        // copy.modifiedDate = this.dateUtils
+        //     .convertLocalDateToServer(registration.modifiedDate);
         return copy;
     }
 }

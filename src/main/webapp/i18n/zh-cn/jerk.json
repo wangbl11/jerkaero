@@ -4,7 +4,7 @@
         "jerk" : {
             "home": {
                 "title": "极客",
-                "createLabel": "创建新 极客",
+                "createLabel": "创建",
                 "createOrEditLabel": "创建或编辑 极客",
                 "search": "查找 极客"
             },
@@ -27,7 +27,13 @@
             "jerkInfo": "报名",
             "inbox": "收件箱",
             "outbox": "发件箱",
-            "favorites": "收藏"
+            "favorites": "收藏",
+            "certificate": "认证",
+            "certificated": "已认证",
+            "uncertificate": "收回认证",
+            "uncertificated":"未认证",
+            "registStatus":"报名状态",
+            "nonregistration":"未报名"
         }
     }
 }

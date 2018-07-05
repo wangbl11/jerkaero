@@ -34,8 +34,28 @@ export class JerkGuoyiSuffixDetailComponent implements OnInit, OnDestroy {
         this.jerkService.find(id)
             .subscribe((jerkResponse: HttpResponse<JerkGuoyiSuffix>) => {
                 this.jerk = jerkResponse.body;
+                if (!this.jerk.preference)
+                   this.jerk.preference={};
             });
     }
+    
+    setActive(jerk,sts){
+        jerk.authStatus = sts?'A1':'A0';
+
+        this.jerkService.update(jerk).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                this.jerk = response.body;
+                   // this.error = null;
+                   // this.success = 'OK';
+                   // this.loadAll();
+                } else {
+                   // this.success = null;
+                   // this.error = 'ERROR';
+                }
+            });
+    }
+    
     previousState() {
         window.history.back();
     }

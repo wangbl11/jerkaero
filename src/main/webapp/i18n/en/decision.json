@@ -2,8 +2,8 @@
     "jerkaeroApp": {
         "Decision" : {
             "null": "",
-            "YES": "YES",
-            "NO": "NO"
+            "YES": "Yes",
+            "NO": "No"
         }
     }
 }

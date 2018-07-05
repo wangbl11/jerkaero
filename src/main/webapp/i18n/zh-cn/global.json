@@ -105,7 +105,9 @@
             "open": "Open",
             "save": "保存",
             "view": "查看",
-            "register": "报名"
+            "register": "报名",
+            "online":"上线",
+            "offline":"下线"
         },
         "detail": {
             "field": "字段",

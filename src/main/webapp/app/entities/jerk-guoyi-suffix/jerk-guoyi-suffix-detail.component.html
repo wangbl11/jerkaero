@@ -6,6 +6,11 @@
         <dt><span jhiTranslate="jerkaeroApp.jerk.username">Username</span></dt>
         <dd>
             <span>{{jerk.username}}</span>
+            <jhi-boolean
+                [value]="jerk.authStatus=='A1'"
+                [textTrue]="'jerkaeroApp.jerk.certificated' | translate"
+                [textFalse]="'jerkaeroApp.jerk.uncertificated' | translate">
+            </jhi-boolean>
         </dd>
         <!-- 
         <dt><span jhiTranslate="jerkaeroApp.jerk.passwd">Passwd</span></dt>
@@ -23,11 +28,11 @@
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.jerk.createdDate">Created Date</span></dt>
         <dd>
-            <span>{{jerk.createdDate | date:'mediumDate'}}</span>
+            <span>{{jerk.createdDate}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.jerk.modifiedDate">Modified Date</span></dt>
         <dd>
-            <span>{{jerk.modifiedDate | date:'mediumDate'}}</span>
+            <span>{{jerk.modifiedDate}}</span>
         </dd>
         <!-- 
         <dt><span jhiTranslate="jerkaeroApp.jerk.jerkInfo">Jerk Info</span></dt>
@@ -65,4 +70,17 @@
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
+  
+    <button type="button" *ngIf="jerk.authStatus=='A0'"
+            (click)="setActive(jerk, true)"
+            class="btn btn-success">
+        <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="jerkaeroApp.jerk.certificate"> Certificate</span>
+    </button>
+    
+    <button type="button" *ngIf="jerk.authStatus=='A1'"
+            (click)="setActive(jerk, false)"
+            class="btn btn-danger">
+        <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="jerkaeroApp.jerk.uncertificate"> Revoke Certification</span>
+    </button>
+    
 </div>

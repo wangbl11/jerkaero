@@ -35,6 +35,7 @@
             <th jhiSortBy="authStatus"><span jhiTranslate="jerkaeroApp.jerk.authStatus">Auth Status</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="createdDate"><span jhiTranslate="jerkaeroApp.jerk.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="modifiedDate"><span jhiTranslate="jerkaeroApp.jerk.modifiedDate">Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th><span jhiTranslate="jerkaeroApp.jerk.registStatus">Registration Status</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,9 +44,17 @@
                 <td><a [routerLink]="['../jerk-guoyi-suffix', jerk.id ]">{{jerk.id}}</a></td>
                 <td>{{jerk.username}}</td>
                 <td>{{jerk.displayname}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" (click)="setActive(jerk, true)" *ngIf="jerk.authStatus=='A0'"
+                            jhiTranslate="jerkaeroApp.jerk.uncertificated">non-certificated</button>
+                    <button class="btn btn-success btn-sm" (click)="setActive(jerk, false)" *ngIf="jerk.authStatus=='A1'"
+                            jhiTranslate="jerkaeroApp.jerk.certificated">Certificated</button>
+                </td>
+                <!-- 
                 <td jhiTranslate="{{'jerkaeroApp.AuthStatusEnum.' + jerk.authStatus}}">{{jerk.authStatus}}</td>
-                <td>{{jerk.createdDate | date:'mediumDate'}}</td>
-                <td>{{jerk.modifiedDate | date:'mediumDate'}}</td>
+                -->
+                <td>{{jerk.createdDate}}</td>
+                <td>{{jerk.modifiedDate}}</td>
                <!-- 
                  <td>
                     <div *ngIf="jerk.jerkInfo">
@@ -58,15 +67,24 @@
                     </div>
                 </td>
                  -->
+                <td>
+                   <button class="btn btn-danger btn-sm" [routerLink]="['../registration-guoyi-suffix-new',{jerkId:jerk.id}]" *ngIf="!jerk.jerkInfo"
+                            jhiTranslate="jerkaeroApp.jerk.nonregistration">No Registration</button>
+                    <button class="btn btn-success btn-sm" [routerLink]="['../registration-guoyi-suffix', jerk.jerkInfo.id ]" *ngIf="jerk.jerkInfo&&jerk.jerkInfo.fbzt==1"
+                            jhiTranslate="jerkaeroApp.registration.onlined">Published</button>
+                    <button class="btn btn-warning btn-sm" [routerLink]="['../registration-guoyi-suffix', jerk.jerkInfo.id ]" *ngIf="jerk.jerkInfo&&jerk.jerkInfo.fbzt==0"
+                            jhiTranslate="jerkaeroApp.registration.offlined">Draft</button>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
+                        <!-- 
                         <button type="submit" *ngIf="jerk.jerkInfo!=null"
                                 [routerLink]="['../registration-guoyi-suffix', jerk.jerkInfo.id ]"
                                 class="btn btn-warning btn-sm">
                             <span class="fa fa-registered"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.register">Registration</span>
                         </button>
-                        <!-- 
+                       
                         <button type="submit" *ngIf="jerk.jerkInfo==null"
                                 [routerLink]="['../registration-guoyi-suffix-new']"
                                 class="btn btn-warning btn-sm">

@@ -4,7 +4,7 @@
         "jerk" : {
             "home": {
                 "title": "極客",
-                "createLabel": "建立一筆新的 極客",
+                "createLabel": "建立",
                 "createOrEditLabel": "建立或編輯 極客",
                 "search": "搜尋 極客"
             },
@@ -27,7 +27,13 @@
             "jerkInfo": "報名",
             "inbox": "收件箱",
             "outbox": "發件箱",
-            "favorites": "收藏"
+            "favorites": "收藏",
+            "certificate": "認證",
+            "certificated": "已認證",
+            "uncertificate": "收回認證",
+            "uncertificated":"未認證",
+            "registStatus":"報名狀態",
+            "nonregistration":"未報名"
         }
     }
 }

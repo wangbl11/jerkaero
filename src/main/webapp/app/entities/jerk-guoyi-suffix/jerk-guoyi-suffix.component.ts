@@ -49,7 +49,21 @@ currentAccount: any;
         this.currentSearch = this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search'] ?
             this.activatedRoute.snapshot.params['search'] : '';
     }
+    setActive(jerk,sts){
+        jerk.authStatus = sts?'A1':'A0';
 
+        this.jerkService.update(jerk).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    this.error = null;
+                    this.success = 'OK';
+                    this.loadAll();
+                } else {
+                    this.success = null;
+                    this.error = 'ERROR';
+                }
+            });
+    }
     loadAll() {
         if (this.currentSearch) {
             this.jerkService.search({

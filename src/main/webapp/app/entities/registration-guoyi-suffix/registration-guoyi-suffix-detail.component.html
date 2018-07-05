@@ -1,12 +1,12 @@
 
 <div *ngIf="registration">
-    <h2><span jhiTranslate="jerkaeroApp.registration.detail.title">Registration</span> {{registration.id}}</h2>
+    <h2><span jhiTranslate="jerkaeroApp.registration.detail.title">Registration</span><span style="font-size:0.7em;" [ngStyle]="{'color':registration.fbzt==1?'green':'red'}"> [{{(registration.fbzt==0?'jerkaeroApp.registration.offlined' :'jerkaeroApp.registration.onlined') | translate}}] </span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="jerkaeroApp.registration.registType">Regist Type</span></dt>
         <dd>
-            <span>{{registration.registType}}</span>
+            <span jhiTranslate="{{'jerkaeroApp.RegisterEnum.' + registration.registType}}">{{registration.registType}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.registration.dwqc">Dwqc</span></dt>
         <dd>
@@ -26,12 +26,20 @@
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.registration.szqylx">Szqylx</span></dt>
         <dd>
-            <span>{{registration.szqylx}}</span>
+            <span jhiTranslate="{{'jerkaeroApp.SzqylxEnum.' + registration.szqylx}}">{{registration.szqylx}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.registration.ssly">Ssly</span></dt>
         <dd>
-            <span>{{registration.ssly}}</span>
+            <span jhiTranslate="{{'jerkaeroApp.SslyEnum.' + registration.ssly}}">{{registration.ssly}}</span><br />
+            <span>{{registration.ssly1}}</span>
+            
         </dd>
+        <!-- 
+        <dt><span jhiTranslate="jerkaeroApp.registration.ssly1">Ssly 1</span></dt>
+        <dd>
+            
+        </dd>
+         -->
         <dt><span jhiTranslate="jerkaeroApp.registration.gscpjj">Gscpjj</span></dt>
         <dd>
             <span>{{registration.gscpjj}}</span>
@@ -68,8 +76,8 @@
         <dd>
             <span>{{registration.jscsd}}</span>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.registration.jzmsylqk">Jzmsylqk</span></dt>
-        <dd>
+        <dt *ngIf="registration.registType=='A2'"><span jhiTranslate="jerkaeroApp.registration.jzmsylqk">Jzmsylqk</span></dt>
+        <dd *ngIf="registration.registType=='A2'">
             <span>{{registration.jzmsylqk}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.registration.jzysjs">Jzysjs</span></dt>
@@ -118,22 +126,36 @@
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.registration.wlxwhdzclx">Wlxwhdzclx</span></dt>
         <dd>
-            <span>{{registration.wlxwhdzclx}}</span>
+          <ul>
+            <li *ngFor="let one of zclxArray">
+              <span jhiTranslate="{{'jerkaeroApp.ZclxEnum.A' + one}}">{{one}}</span> <span *ngIf="one==10">( {{registration.wlxwhdzclx1}} )</span>
+            </li>
+          </ul>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.registration.wlxwhdzclx1">Wlxwhdzclx 1</span></dt>
-        <dd>
+        
+        <!-- 
+        <dt *ngIf="zclxArray.indexOf(10)>=0"><span jhiTranslate="jerkaeroApp.registration.wlxwhdzclx1">Wlxwhdzclx 1</span></dt>
+        <dd *ngIf="zclxArray.indexOf(10)>=0">
             <span>{{registration.wlxwhdzclx1}}</span>
         </dd>
+         -->
+         
+        <!--  您是否需要大赛组委会协助您进行媒体宣传 -->
         <dt><span jhiTranslate="jerkaeroApp.registration.sfxyxc">Sfxyxc</span></dt>
         <dd>
-            <span>{{registration.sfxyxc}}</span>
+          <ul>
+            <li *ngFor="let one of sfxyxcArray"> 
+              <span jhiTranslate="{{'jerkaeroApp.SfxyxcEnum.A' + one}}">{{one}}</span>
+            </li>
+          </ul>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.registration.rzjhgkfw">Rzjhgkfw</span></dt>
-        <dd>
+        
+        <dt *ngIf="registration.registType=='A2'"><span jhiTranslate="jerkaeroApp.registration.rzjhgkfw">Rzjhgkfw</span></dt>
+        <dd *ngIf="registration.registType=='A2'">
             <span jhiTranslate="{{'jerkaeroApp.RzjhgkfwEnum.' + registration.rzjhgkfw}}">{{registration.rzjhgkfw}}</span>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.registration.rzmb">Rzmb</span></dt>
-        <dd>
+        <dt *ngIf="registration.registType=='A2'"><span jhiTranslate="jerkaeroApp.registration.rzmb">Rzmb</span></dt>
+        <dd *ngIf="registration.registType=='A2'">
             <span jhiTranslate="{{'jerkaeroApp.RzmbEnum.' + registration.rzmb}}">{{registration.rzmb}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.registration.lxrzw">Lxrzw</span></dt>
@@ -152,18 +174,17 @@
         <dd>
             <span>{{registration.lxdz}}</span>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.registration.ssly1">Ssly 1</span></dt>
-        <dd>
-            <span>{{registration.ssly1}}</span>
-        </dd>
+
+         
         <dt><span jhiTranslate="jerkaeroApp.registration.createdDate">Created Date</span></dt>
         <dd>
-            <span>{{registration.createdDate | date:'mediumDate'}}</span>
+            <span>{{registration.createdDate | date:'yyyy-MM-dd HH:ss:mm'}}</span>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.registration.modifiedDate">Modified Date</span></dt>
-        <dd>
-            <span>{{registration.modifiedDate | date:'mediumDate'}}</span>
+        <dt *ngIf="registration.modifiedDate"><span jhiTranslate="jerkaeroApp.registration.modifiedDate">Modified Date</span></dt>
+         <dd *ngIf="registration.modifiedDate">
+            <span>{{registration.modifiedDate | date:'yyyy-MM-dd HH:ss:mm'}}</span>
         </dd>
+        
     </dl>
 
     <button type="submit"
@@ -184,5 +205,17 @@
             [routerLink]="['/registration-guoyi-suffix/'+ registration.id + '/edit' ]"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+    
+    <button type="button" *ngIf="registration.fbzt==0"
+            [routerLink]="['/registration-guoyi-suffix/'+ registration.id + '/online' ]"
+            class="btn btn-success">
+        <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="entity.action.online"> Publish</span>
+    </button>
+    
+    <button type="button" *ngIf="registration.fbzt==1"
+            [routerLink]="['/registration-guoyi-suffix/'+ registration.id + '/offline' ]"
+            class="btn btn-danger">
+        <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="entity.action.offline"> Publish</span>
     </button>
 </div>

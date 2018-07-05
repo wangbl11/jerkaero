@@ -27,7 +27,13 @@
             "preference": "Preference",
             "inbox": "Inbox",
             "outbox": "Outbox",
-            "favorites": "Favorites"
+            "favorites": "Favorites",
+            "certificate": "certificate",
+            "certificated": "certificated",
+            "uncertificate": "revoke certificattion",
+            "uncertificated":"non-certificated",
+            "registStatus":"Registration Status",
+            "nonregistration":"No Registration"
         }
     }
 }

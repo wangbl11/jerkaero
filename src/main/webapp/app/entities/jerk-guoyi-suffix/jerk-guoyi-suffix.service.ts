@@ -26,6 +26,9 @@ export class JerkGuoyiSuffixService {
 
     update(jerk: JerkGuoyiSuffix): Observable<EntityResponseType> {
         const copy = this.convert(jerk);
+        if (copy.preference&&!copy.preference['id']&&!copy.preference['wechat'])
+             copy.preference=null;
+        
         return this.http.put<JerkGuoyiSuffix>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
@@ -75,6 +78,7 @@ export class JerkGuoyiSuffixService {
         //     .convertLocalDateFromServer(jerk.createdDate);
         // copy.modifiedDate = this.dateUtils
         //     .convertLocalDateFromServer(jerk.modifiedDate);
+        // console.log(copy.modifiedDate);
         return copy;
     }
 

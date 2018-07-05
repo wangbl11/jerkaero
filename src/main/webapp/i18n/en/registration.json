@@ -3,7 +3,7 @@
     "jerkaeroApp": {
         "registration" : {
             "home": {
-                "title": "Registrations",
+                "title": "Jerk - Registrations",
                 "createLabel": "Create a new Registration",
                 "createOrEditLabel": "Create or edit a Registration",
                 "search": "Search for Registration"
@@ -54,9 +54,13 @@
             "lxdh": "Lxdh",
             "lxyx": "Lxyx",
             "lxdz": "Lxdz",
-            "ssly1": "Ssly 1",
+            "ssly1": "Area Description",
             "createdDate": "Created Date",
-            "modifiedDate": "Modified Date"
+            "modifiedDate": "Modified Date",
+            "offline":"Offline",
+            "online":"Publish",
+            "offlined":"Draft",
+            "onlined":"Published"
         }
     }
 }

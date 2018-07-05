@@ -1,6 +1,10 @@
 package com.guoyi.jerkaero.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,8 +13,7 @@ import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
-import java.time.Instant;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -52,11 +55,15 @@ public class Jerk implements Serializable {
     @Column(name = "auth_status", nullable = false)
     private AuthStatusEnum authStatus;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_date",  insertable = false,updatable=false)
-    private Instant createdDate;
+    private LocalDateTime createdDate;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "modified_date", insertable = false,updatable=false)
-    private Instant modifiedDate;
+    private LocalDateTime modifiedDate;
 
     @OneToOne(fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
     @JoinColumn(name="registration_id",unique = true)
@@ -145,29 +152,29 @@ public class Jerk implements Serializable {
         this.authStatus = authStatus;
     }
 
-    public Instant getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Jerk createdDate(Instant createdDate) {
+    public Jerk createdDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(Instant createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Instant getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public Jerk modifiedDate(Instant modifiedDate) {
+    public Jerk modifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(Instant modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
     

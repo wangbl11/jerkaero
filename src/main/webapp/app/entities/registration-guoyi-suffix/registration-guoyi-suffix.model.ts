@@ -101,6 +101,8 @@ export class RegistrationGuoyiSuffix implements BaseEntity {
         public ssly1?: string,
         public createdDate?: any,
         public modifiedDate?: any,
+        public fbzt?:number,
+        public jerk?:any
     ) {
     }
 }

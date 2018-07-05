@@ -105,7 +105,9 @@
             "open": "開啟",
             "save": "儲存",
             "view": "檢視",
-            "register": "報名"
+            "register": "報名",
+            "online":"上線",
+            "offline":"下線"
         },
         "detail": {
             "field": "欄位",

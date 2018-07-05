@@ -67,7 +67,6 @@
             <select class="form-control" name="authStatus" [(ngModel)]="jerk.authStatus" id="field_authStatus"  required>
                 <option value="A0">{{'jerkaeroApp.AuthStatusEnum.A0' | translate}}</option>
                 <option value="A1">{{'jerkaeroApp.AuthStatusEnum.A1' | translate}}</option>
-                <option value="A2">{{'jerkaeroApp.AuthStatusEnum.A2' | translate}}</option>
             </select>
             <div [hidden]="!(editForm.controls.authStatus?.dirty && editForm.controls.authStatus?.invalid)">
                 <small class="form-text text-danger"
@@ -109,7 +108,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit"
+        <button 
             (click)="previousState()"
             class="btn btn-info">
            <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

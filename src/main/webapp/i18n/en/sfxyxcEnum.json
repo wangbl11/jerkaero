@@ -1,0 +1,11 @@
+{
+    "jerkaeroApp": {
+        "SfxyxcEnum" : {
+            "null": "",
+            "A1": "Expected to be reported at registration phase",
+            "A2": "Use its own news material to report",
+            "A3": "Willing to participate in the warm-up roadshows",
+            "A4": "Do not want to be reported"
+        }
+    }
+}

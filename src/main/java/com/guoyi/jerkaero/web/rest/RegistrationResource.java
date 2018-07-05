@@ -58,6 +58,7 @@ public class RegistrationResource {
         if (registration.getId() != null) {
             throw new BadRequestAlertException("A new registration cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        
         Registration result = registrationRepository.save(registration);
         registrationSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/registrations/" + result.getId()))
