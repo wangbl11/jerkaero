@@ -3,6 +3,7 @@ package com.guoyi.jerkaero.web.rest;
 import com.guoyi.jerkaero.JerkaeroApp;
 
 import com.guoyi.jerkaero.domain.Mailbox;
+import com.guoyi.jerkaero.domain.enumeration.MessageTypeEnum;
 import com.guoyi.jerkaero.repository.MailboxRepository;
 import com.guoyi.jerkaero.repository.search.MailboxSearchRepository;
 import com.guoyi.jerkaero.web.rest.errors.ExceptionTranslator;
@@ -22,7 +23,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class MailboxResourceIntTest {
     private static final Long DEFAULT_RECEIVER_ID = 1L;
     private static final Long UPDATED_RECEIVER_ID = 2L;
 
-    private static final Integer DEFAULT_MSG_TYPE = 1;
-    private static final Integer UPDATED_MSG_TYPE = 2;
+    private static final MessageTypeEnum DEFAULT_MSG_TYPE = MessageTypeEnum.BROADCAST;
+    private static final MessageTypeEnum UPDATED_MSG_TYPE = MessageTypeEnum.PRIVATE;
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
@@ -59,11 +60,11 @@ public class MailboxResourceIntTest {
     private static final Long DEFAULT_SOURCE_ID = 1L;
     private static final Long UPDATED_SOURCE_ID = 2L;
 
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_CREATED_DATE = LocalDateTime.now(ZoneId.systemDefault());
+    private static final LocalDateTime UPDATED_CREATED_DATE = DEFAULT_CREATED_DATE.plusSeconds(30);
 
-    private static final LocalDate DEFAULT_READ_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_READ_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_READ_DATE = LocalDateTime.now(ZoneId.systemDefault());
+    private static final LocalDateTime UPDATED_READ_DATE = DEFAULT_READ_DATE.plusSeconds(30);
 
     private static final Integer DEFAULT_ANONYMOUS = 1;
     private static final Integer UPDATED_ANONYMOUS = 2;

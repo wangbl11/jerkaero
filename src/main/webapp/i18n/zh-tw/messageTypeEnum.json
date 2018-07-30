@@ -1,0 +1,11 @@
+{
+    "jerkaeroApp": {
+        "MessageTypeEnum" : {
+            "null": "",
+            "BROADCAST": "廣播",
+            "PRIVATE": "私有",
+            "0": "廣播",
+            "1": "私有"
+        }
+    }
+}

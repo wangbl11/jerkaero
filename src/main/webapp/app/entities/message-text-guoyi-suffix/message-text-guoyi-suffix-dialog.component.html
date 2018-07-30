@@ -1,0 +1,168 @@
+				<h4 class="modal-title" id="myMessageTextLabel"
+					jhiTranslate="jerkaeroApp.messageText.home.createOrEditLabel">Create
+					or edit a Message Text</h4>
+<div class="row">
+	<div class="col-md-8">
+		<form *ngIf="messageText" name="editForm" role="form" novalidate
+			(ngSubmit)="save()" #editForm="ngForm">
+<!-- 
+			<div class="modal-header">
+				<h4 class="modal-title" id="myMessageTextLabel"
+					jhiTranslate="jerkaeroApp.messageText.home.createOrEditLabel">Create
+					or edit a Message Text</h4>
+			</div>
+-->
+			<div class="modal-body">
+				<jhi-alert-error></jhi-alert-error>
+				<div class="form-group" [hidden]="!messageText.id">
+					<label for="id" jhiTranslate="global.field.id">ID</label> <input
+						type="text" class="form-control" id="id" name="id"
+						[(ngModel)]="messageText.id" readonly />
+				</div>
+				<!-- 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.messageText.sendID" for="field_sendID">Send ID</label>
+            <input type="number" class="form-control" name="sendID" id="field_sendID"
+                [(ngModel)]="messageText.sendID" required/>
+            <div [hidden]="!(editForm.controls.sendID?.dirty && editForm.controls.sendID?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sendID?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.sendID?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        -->
+				<div class="form-group">
+					<label class="form-control-label"
+						jhiTranslate="jerkaeroApp.messageText.type" for="field_type">Type</label>
+					<div class="row">
+						<span class="col-sm-6"> <input type="radio" name="msgType"
+							[(ngModel)]="messageText.msgType" [value]="0" />
+							{{'jerkaeroApp.MessageTypeEnum.BROADCAST' | translate}}
+						</span>
+						
+
+						<span class="col-sm-6"> <input type="radio" name="msgType"
+							[(ngModel)]="messageText.msgType" [value]="1" />
+							{{'jerkaeroApp.MessageTypeEnum.PRIVATE' | translate}}
+						</span>
+						
+						 
+					</div>
+					<div
+						[hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+						<small class="form-text text-danger"
+							[hidden]="!editForm.controls.type?.errors?.required"
+							jhiTranslate="entity.validation.required"> This field is
+							required. </small> <small class="form-text text-danger"
+							[hidden]="!editForm.controls.type?.errors?.number"
+							jhiTranslate="entity.validation.number"> This field
+							should be a number. </small>
+					</div>
+				</div>
+				<div class="form-group" *ngIf="messageText.msgType==1">
+					<label class="form-control-label"
+						jhiTranslate="jerkaeroApp.messageText.recID" for="field_recID">Receiver</label>
+					<input type="text" class="form-control" name="recID"
+						id="field_recID" [(ngModel)]="recNames" required
+						maxlength="120" />
+
+					<div
+						[hidden]="!(editForm.controls.recID?.dirty && editForm.controls.recID?.invalid)">
+						<small class="form-text text-danger"
+							[hidden]="!editForm.controls.recID?.errors?.required"
+							jhiTranslate="entity.validation.required"> This field is
+							required. </small>
+					</div>
+
+				</div>
+				<div class="form-group">
+					<label class="form-control-label"
+						jhiTranslate="jerkaeroApp.messageText.title" for="field_title">Title</label>
+					<input type="text" class="form-control" name="title"
+						id="field_title" [(ngModel)]="messageText.title" required
+						maxlength="120" />
+					<div
+						[hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+						<small class="form-text text-danger"
+							[hidden]="!editForm.controls.title?.errors?.required"
+							jhiTranslate="entity.validation.required"> This field is
+							required. </small> <small class="form-text text-danger"
+							[hidden]="!editForm.controls.title?.errors?.maxlength"
+							jhiTranslate="entity.validation.maxlength"
+							translateValues="{ max: 120 }"> This field cannot be
+							longer than 120 characters. </small>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-control-label"
+						jhiTranslate="jerkaeroApp.messageText.mcontent"
+						for="field_mcontent">Mcontent</label>
+					<textarea rows="5" class="form-control" name="mcontent"
+						id="field_mcontent" [(ngModel)]="messageText.mcontent" required></textarea>
+					<div
+						[hidden]="!(editForm.controls.mcontent?.dirty && editForm.controls.mcontent?.invalid)">
+						<small class="form-text text-danger"
+							[hidden]="!editForm.controls.mcontent?.errors?.required"
+							jhiTranslate="entity.validation.required"> This field is
+							required. </small>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal"
+					(click)="previousState()">
+					<span class="fa fa-ban"></span>&nbsp;<span
+						jhiTranslate="entity.action.cancel">Cancel</span>
+				</button>
+				<button type="submit" [disabled]="editForm.form.invalid || isSaving"
+					class="btn btn-primary">
+					<span class="fa fa-save"></span>&nbsp;<span
+						jhiTranslate="entity.action.save">Save</span>
+				</button>
+			</div>
+
+		</form>
+	</div>
+	<div class="col-md-3" *ngIf="messageText&&messageText.msgType==1">
+		<div class="row p-a-10">
+			<div class="col-sm-12">
+				<form name="searchForm" class="form-inline">
+					<div class="input-group w-100 mt-3">
+						<input type="text" class="form-control"
+							[(ngModel)]="currentSearch" id="currentSearch"
+							name="currentSearch"
+							placeholder="{{ 'jerkaeroApp.messageText.receiver.search' | translate }}">
+						<button class="input-group-append btn btn-info"
+							(click)="search(currentSearch)">
+							<span class="fa fa-search"></span>
+						</button>
+						<button class="input-group-append btn btn-danger"
+							(click)="clear()" *ngIf="currentSearch">
+							<span class="fa fa-trash-o"></span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<table class="table table-striped table-bordered" style="margin-top:20px">
+		<!-- 
+			<thead>
+				<tr>
+					<th><span jhiTranslate="jerkaeroApp.messageText.recID">Receiver</span></th>
+				</tr>
+			</thead>
+		-->
+			<tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+				<tr *ngFor="let jerk of jerks">
+					<td (dblclick)="doubleClick(jerk.id,jerk.displayname)">{{jerk.displayname}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

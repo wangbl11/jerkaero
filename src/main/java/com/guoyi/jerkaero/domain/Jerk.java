@@ -3,8 +3,9 @@ package com.guoyi.jerkaero.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -55,12 +56,14 @@ public class Jerk implements Serializable {
     @Column(name = "auth_status", nullable = false)
     private AuthStatusEnum authStatus;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_date",  insertable = false,updatable=false)
     private LocalDateTime createdDate;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "modified_date", insertable = false,updatable=false)
     private LocalDateTime modifiedDate;

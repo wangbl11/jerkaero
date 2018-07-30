@@ -6,7 +6,8 @@
                 "title": "報名",
                 "createLabel": "建立一筆新的 報名",
                 "createOrEditLabel": "建立或編輯 報名",
-                "search": "搜尋 報名"
+                "search": "搜尋 報名",
+                "exportLabel":"導出"
             },
             "created": "新的 報名 建立成功，識別碼為 {{ param }}",
             "updated": "識別碼為 {{ param }} 的 報名 更新成功",

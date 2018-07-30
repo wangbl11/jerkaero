@@ -52,6 +52,10 @@ public class CacheConfiguration {
             cm.createCache(com.guoyi.jerkaero.domain.Setting.class.getName(), jcacheConfiguration);
             cm.createCache(com.guoyi.jerkaero.domain.Footprint.class.getName(), jcacheConfiguration);
             cm.createCache(com.guoyi.jerkaero.domain.GlobalSetting.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.SystemMessage.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.MessageText.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.Message.class.getName(), jcacheConfiguration);
+            cm.createCache(com.guoyi.jerkaero.domain.VMessage.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

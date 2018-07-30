@@ -6,7 +6,8 @@
                 "title": "报名s",
                 "createLabel": "创建新 报名",
                 "createOrEditLabel": "创建或编辑 报名",
-                "search": "查找 报名"
+                "search": "查找 报名",
+                "exportLabel":"导出"
             },
             "created": "报名 {{ param }} 创建成功",
             "updated": "报名 {{ param }} 更新成功",

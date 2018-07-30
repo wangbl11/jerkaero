@@ -70,10 +70,10 @@ export class MailboxGuoyiSuffixService {
      */
     private convertItemFromServer(mailbox: MailboxGuoyiSuffix): MailboxGuoyiSuffix {
         const copy: MailboxGuoyiSuffix = Object.assign({}, mailbox);
-        copy.createdDate = this.dateUtils
-            .convertLocalDateFromServer(mailbox.createdDate);
-        copy.readDate = this.dateUtils
-            .convertLocalDateFromServer(mailbox.readDate);
+        // copy.createdDate = this.dateUtils
+        //     .convertLocalDateFromServer(mailbox.createdDate);
+        // copy.readDate = this.dateUtils
+        //     .convertLocalDateFromServer(mailbox.readDate);
         return copy;
     }
 
@@ -82,10 +82,10 @@ export class MailboxGuoyiSuffixService {
      */
     private convert(mailbox: MailboxGuoyiSuffix): MailboxGuoyiSuffix {
         const copy: MailboxGuoyiSuffix = Object.assign({}, mailbox);
-        copy.createdDate = this.dateUtils
-            .convertLocalDateToServer(mailbox.createdDate);
-        copy.readDate = this.dateUtils
-            .convertLocalDateToServer(mailbox.readDate);
+        // copy.createdDate = this.dateUtils
+        //     .convertLocalDateToServer(mailbox.createdDate);
+        // copy.readDate = this.dateUtils
+        //     .convertLocalDateToServer(mailbox.readDate);
         return copy;
     }
 }

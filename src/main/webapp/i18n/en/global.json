@@ -10,11 +10,13 @@
                 "jerkGuoyiSuffix": "Jerk",
                 "registrationGuoyiSuffix": "Registration",
                 "preferenceGuoyiSuffix": "Preference",
-                "mailboxGuoyiSuffix": "Mailbox",
+                "mailboxGuoyiSuffix": "Messages",
                 "tagGuoyiSuffix": "Tag",
                 "settingGuoyiSuffix": "Setting",
                 "footprintGuoyiSuffix": "Footprint",
                 "globalSettingGuoyiSuffix": "Global Setting",
+                "messageTextGuoyiSuffix": "Message Text",
+                "messageGuoyiSuffix": "Message",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

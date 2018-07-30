@@ -8,8 +8,14 @@ import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 /**
  * A Preference.
@@ -46,11 +52,17 @@ public class Preference implements Serializable {
     @Column(name = "lang")
     private String lang;
 
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "modified_date")
-    private LocalDate modifiedDate;
+    private LocalDateTime modifiedDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -113,29 +125,29 @@ public class Preference implements Serializable {
         this.lang = lang;
     }
 
-    public LocalDate getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Preference createdDate(LocalDate createdDate) {
+    public Preference createdDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDate getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public Preference modifiedDate(LocalDate modifiedDate) {
+    public Preference modifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

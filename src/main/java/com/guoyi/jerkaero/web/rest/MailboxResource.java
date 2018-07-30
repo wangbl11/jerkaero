@@ -108,6 +108,15 @@ public class MailboxResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    @GetMapping("/systemmsgs")
+    @Timed
+    public ResponseEntity<List<Mailbox>> getSystemMsgs(Pageable pageable) {
+        log.debug("REST request to get a page of Mailboxes");
+        Page<Mailbox> page = mailboxRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/mailboxes");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    
     /**
      * GET  /mailboxes/:id : get the "id" mailbox.
      *

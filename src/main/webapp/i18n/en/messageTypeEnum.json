@@ -1,0 +1,11 @@
+{
+    "jerkaeroApp": {
+        "MessageTypeEnum" : {
+            "null": "",
+            "BROADCAST": "Broadcast",
+            "PRIVATE": "Private",
+            "0":"Broadcast",
+            "1": "Private"
+        }
+    }
+}

@@ -7,8 +7,16 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.guoyi.jerkaero.domain.enumeration.MessageTypeEnum;
+
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -35,8 +43,9 @@ public class Mailbox implements Serializable {
     private Long receiverId;
 
     @NotNull
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "msg_type", nullable = false)
-    private Integer msgType;
+    private MessageTypeEnum msgType;
 
     @NotNull
     @Size(max = 200)
@@ -47,17 +56,20 @@ public class Mailbox implements Serializable {
     @Column(name = "mcontent", nullable = false)
     private String mcontent;
 
-    @NotNull
     @Column(name = "source_id", nullable = false)
     private Long sourceId;
 
-    @NotNull
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
-    @NotNull
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "read_date", nullable = false)
-    private LocalDate readDate;
+    private LocalDateTime readDate;
 
     @NotNull
     @Column(name = "anonymous", nullable = false)
@@ -98,16 +110,17 @@ public class Mailbox implements Serializable {
         this.receiverId = receiverId;
     }
 
-    public Integer getMsgType() {
+    public MessageTypeEnum getMsgType() {
         return msgType;
     }
 
-    public Mailbox msgType(Integer msgType) {
+    @Enumerated(EnumType.ORDINAL)
+    public Mailbox msgType(MessageTypeEnum msgType) {
         this.msgType = msgType;
         return this;
     }
 
-    public void setMsgType(Integer msgType) {
+    public void setMsgType(MessageTypeEnum msgType) {
         this.msgType = msgType;
     }
 
@@ -150,29 +163,29 @@ public class Mailbox implements Serializable {
         this.sourceId = sourceId;
     }
 
-    public LocalDate getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Mailbox createdDate(LocalDate createdDate) {
+    public Mailbox createdDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDate getReadDate() {
+    public LocalDateTime getReadDate() {
         return readDate;
     }
 
-    public Mailbox readDate(LocalDate readDate) {
+    public Mailbox readDate(LocalDateTime readDate) {
         this.readDate = readDate;
         return this;
     }
 
-    public void setReadDate(LocalDate readDate) {
+    public void setReadDate(LocalDateTime readDate) {
         this.readDate = readDate;
     }
 

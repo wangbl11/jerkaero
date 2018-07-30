@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.TemporalUnit;
@@ -57,10 +57,10 @@ public class JerkResourceIntTest {
     private static final AuthStatusEnum DEFAULT_AUTH_STATUS = AuthStatusEnum.A0;
     private static final AuthStatusEnum UPDATED_AUTH_STATUS = AuthStatusEnum.A1;
 
-    private static final Instant DEFAULT_CREATED_DATE = Instant.now();
-    private static final Instant UPDATED_CREATED_DATE = DEFAULT_CREATED_DATE.plusSeconds(300);
-    private static final Instant DEFAULT_MODIFIED_DATE = DEFAULT_CREATED_DATE.plusSeconds(600);
-    private static final Instant UPDATED_MODIFIED_DATE = DEFAULT_MODIFIED_DATE.plusSeconds(1200);
+    private static final LocalDateTime DEFAULT_CREATED_DATE = LocalDateTime.now();
+    private static final LocalDateTime UPDATED_CREATED_DATE = DEFAULT_CREATED_DATE.plusSeconds(300);
+    private static final LocalDateTime DEFAULT_MODIFIED_DATE = DEFAULT_CREATED_DATE.plusSeconds(600);
+    private static final LocalDateTime UPDATED_MODIFIED_DATE = DEFAULT_MODIFIED_DATE.plusSeconds(1200);
 
     @Autowired
     private JerkRepository jerkRepository;

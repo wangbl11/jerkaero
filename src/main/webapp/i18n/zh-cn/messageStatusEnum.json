@@ -1,0 +1,10 @@
+{
+    "jerkaeroApp": {
+        "MessageStatusEnum" : {
+            "null": "",
+            "ONLINE": "已上线",
+            "OFFLINE": "已下线",
+            "DELETED":"已删除"
+        }
+    }
+}

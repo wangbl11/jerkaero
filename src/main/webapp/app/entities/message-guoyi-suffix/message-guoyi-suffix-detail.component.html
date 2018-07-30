@@ -1,0 +1,42 @@
+
+<div *ngIf="message">
+    <h2><span jhiTranslate="jerkaeroApp.message.detail.title">Message</span> {{message.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jerkaeroApp.message.sendID">Send ID</span></dt>
+        <dd>
+            <span>{{message.sendID}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.message.recID">Rec ID</span></dt>
+        <dd>
+            <span>{{message.recID}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.message.messageID">Message ID</span></dt>
+        <dd>
+            <span>{{message.messageID}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.message.statue">Statue</span></dt>
+        <dd>
+            <span>{{message.statue}}</span>
+        </dd>
+        <dt><span jhiTranslate="jerkaeroApp.message.readDate">Read Date</span></dt>
+        <dd>
+            <span>{{message.readDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'message-guoyi-suffix/'+ message.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

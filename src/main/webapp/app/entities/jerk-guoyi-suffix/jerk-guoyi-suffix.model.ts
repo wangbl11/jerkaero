@@ -6,7 +6,14 @@ export const enum AuthStatusEnum {
     'A1',
     'A2'
 }
-
+export class JerkSimpleGuoyiSuffix implements BaseEntity {
+    constructor(
+        public id?: number,
+        public name?: string,
+        public email?: string,
+    ) {
+    }
+}
 export class JerkGuoyiSuffix implements BaseEntity {
     constructor(
         public id?: number,

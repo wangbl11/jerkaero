@@ -22,7 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -53,11 +53,11 @@ public class PreferenceResourceIntTest {
     private static final String DEFAULT_LANG = "AAAAAAAAAA";
     private static final String UPDATED_LANG = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_CREATED_DATE = LocalDateTime.now(ZoneId.systemDefault());
+    private static final LocalDateTime UPDATED_CREATED_DATE = LocalDateTime.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_MODIFIED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_MODIFIED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_MODIFIED_DATE = LocalDateTime.now(ZoneId.systemDefault());
+    private static final LocalDateTime UPDATED_MODIFIED_DATE = LocalDateTime.now(ZoneId.systemDefault());
 
     @Autowired
     private PreferenceRepository preferenceRepository;

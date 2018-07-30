@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.Instant;
 import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
@@ -56,11 +57,11 @@ public class GlobalSettingResourceIntTest {
     private static final String DEFAULT_DEFVALUE = "AAAAAAAAAA";
     private static final String UPDATED_DEFVALUE = "BBBBBBBBBB";
 
-    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDateTime DEFAULT_CREATED_DATE = LocalDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_CREATED_DATE = LocalDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_MODIFIED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_MODIFIED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDateTime DEFAULT_MODIFIED_DATE = LocalDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_MODIFIED_DATE = LocalDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private GlobalSettingRepository globalSettingRepository;

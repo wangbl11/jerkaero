@@ -1,0 +1,9 @@
+{
+    "jerkaeroApp": {
+        "ReadStatusEnum" : {
+            "null": "",
+            "A0": "Not Read",
+            "A1": "Readed"
+        }
+    }
+}

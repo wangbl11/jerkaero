@@ -1,0 +1,20 @@
+entity MessageText {
+	sendID Long required,
+	type Integer required ,
+	title String required maxlength(120),
+    mcontent String required,
+	createdDate ZonedDateTime required
+}
+paginate MessageText with pagination
+
+entity Message {
+	sendID Long required,
+	recID Long required,
+	messageID Long required ,
+	statue Integer required,
+	readDate ZonedDateTime required
+}
+paginate Message with pagination
+
+// Set an angular suffix
+angularSuffix * with guoyiSuffix

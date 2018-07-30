@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -47,10 +47,10 @@ public class GlobalSetting implements Serializable {
 
     @NotNull
     @Column(name = "created_date", nullable = false)
-    private ZonedDateTime createdDate;
+    private LocalDateTime createdDate;
 
     @Column(name = "modified_date")
-    private ZonedDateTime modifiedDate;
+    private LocalDateTime modifiedDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -113,29 +113,29 @@ public class GlobalSetting implements Serializable {
         this.defvalue = defvalue;
     }
 
-    public ZonedDateTime getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public GlobalSetting createdDate(ZonedDateTime createdDate) {
+    public GlobalSetting createdDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(ZonedDateTime createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public ZonedDateTime getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public GlobalSetting modifiedDate(ZonedDateTime modifiedDate) {
+    public GlobalSetting modifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(ZonedDateTime modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

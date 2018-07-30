@@ -8,7 +8,6 @@ import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -21,7 +20,11 @@ import com.guoyi.jerkaero.domain.enumeration.RegisterEnum;
 import com.guoyi.jerkaero.domain.enumeration.JmlyqkEnum;
 
 import com.guoyi.jerkaero.domain.enumeration.XbEnum;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.guoyi.jerkaero.domain.enumeration.AgeEnum;
 
 import com.guoyi.jerkaero.domain.enumeration.RzjhgkfwEnum;
@@ -253,9 +256,15 @@ public class Registration implements Serializable {
     @Column(name = "ssly_1", length = 60)
     private String ssly1;
 
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_date", nullable = false)
     private LocalDateTime createdDate;
 
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "modified_date")
     private LocalDateTime modifiedDate;
     

@@ -5,7 +5,7 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { JerkGuoyiSuffix } from './jerk-guoyi-suffix.model';
+import { JerkGuoyiSuffix,JerkSimpleGuoyiSuffix } from './jerk-guoyi-suffix.model';
 import { createRequestOption } from '../../shared';
 
 export type EntityResponseType = HttpResponse<JerkGuoyiSuffix>;
@@ -15,6 +15,8 @@ export class JerkGuoyiSuffixService {
 
     private resourceUrl =  SERVER_API_URL + 'api/jerks';
     private resourceSearchUrl = SERVER_API_URL + 'api/_search/jerks';
+    private resourceSimpleUrl =  SERVER_API_URL + 'api/simplejerks';
+    private resourceSimpleSearchUrl = SERVER_API_URL + 'api/_search/simplejerks';
 
     constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
 
@@ -43,6 +45,11 @@ export class JerkGuoyiSuffixService {
         return this.http.get<JerkGuoyiSuffix[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<JerkGuoyiSuffix[]>) => this.convertArrayResponse(res));
     }
+    querySimple(req?: any): Observable<HttpResponse<JerkGuoyiSuffix[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<JerkGuoyiSuffix[]>(this.resourceSimpleUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<JerkGuoyiSuffix[]>) => this.convertArrayResponse(res));
+    }
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
@@ -51,6 +58,12 @@ export class JerkGuoyiSuffixService {
     search(req?: any): Observable<HttpResponse<JerkGuoyiSuffix[]>> {
         const options = createRequestOption(req);
         return this.http.get<JerkGuoyiSuffix[]>(this.resourceSearchUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<JerkGuoyiSuffix[]>) => this.convertArrayResponse(res));
+    }
+
+    searchSimple(req?: any): Observable<HttpResponse<JerkGuoyiSuffix[]>> {
+        const options = createRequestOption(req);
+        return this.http.get<JerkSimpleGuoyiSuffix[]>(this.resourceSearchUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<JerkGuoyiSuffix[]>) => this.convertArrayResponse(res));
     }
 

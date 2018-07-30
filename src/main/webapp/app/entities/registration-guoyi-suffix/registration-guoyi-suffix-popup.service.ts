@@ -29,6 +29,7 @@ export class RegistrationGuoyiSuffixPopupService {
                 this.registrationService.find(id)
                     .subscribe((registrationResponse: HttpResponse<RegistrationGuoyiSuffix>) => {
                         const registration: RegistrationGuoyiSuffix = registrationResponse.body;
+                        /*
                         if (registration.createdDate) {
                             registration.createdDate = {
                                 year: registration.createdDate.getFullYear(),
@@ -43,6 +44,7 @@ export class RegistrationGuoyiSuffixPopupService {
                                 day: registration.modifiedDate.getDate()
                             };
                         }
+                        */
                         this.ngbModalRef = this.registrationModalRef(component, registration);
                         resolve(this.ngbModalRef);
                     });

@@ -1,0 +1,10 @@
+{
+    "jerkaeroApp": {
+        "MessageStatusEnum" : {
+            "null": "",
+            "ONLINE": "Online",
+            "OFFLINE": "Offline",
+            "DELETED":"Deleted"
+        }
+    }
+}

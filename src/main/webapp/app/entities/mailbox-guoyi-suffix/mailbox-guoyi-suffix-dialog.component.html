@@ -1,20 +1,24 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form name="editForm" role="form" novalidate (ngSubmit)="save()"
+	#editForm="ngForm">
 
-    <div class="modal-header">
-        <h4 class="modal-title" id="myMailboxLabel" jhiTranslate="jerkaeroApp.mailbox.home.createOrEditLabel">Create or edit a Mailbox</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;</button>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!mailbox.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="mailbox.id" readonly />
-        </div>
+	<div class="modal-header">
+		<h4 class="modal-title" id="myMailboxLabel"
+			jhiTranslate="jerkaeroApp.mailbox.home.createOrEditLabel">Create
+			or edit a Mailbox</h4>
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" (click)="clear()">&times;</button>
+	</div>
+	<div class="modal-body">
+		<jhi-alert-error></jhi-alert-error>
+		<div class="form-group" [hidden]="!mailbox.id">
+			<label for="id" jhiTranslate="global.field.id">ID</label> <input
+				type="text" class="form-control" id="id" name="id"
+				[(ngModel)]="mailbox.id" readonly />
+		</div>
+		<!-- 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.sendId" for="field_sendId">Send Id</label>
-            <input type="number" class="form-control" name="sendId" id="field_sendId"
+            <input readonly type="number" class="form-control" name="sendId" id="field_sendId"
                 [(ngModel)]="mailbox.sendId" required/>
             <div [hidden]="!(editForm.controls.sendId?.dirty && editForm.controls.sendId?.invalid)">
                 <small class="form-text text-danger"
@@ -27,62 +31,83 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.receiverId" for="field_receiverId">Receiver Id</label>
-            <input type="number" class="form-control" name="receiverId" id="field_receiverId"
-                [(ngModel)]="mailbox.receiverId" required/>
-            <div [hidden]="!(editForm.controls.receiverId?.dirty && editForm.controls.receiverId?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.receiverId?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.receiverId?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.msgType" for="field_msgType">Msg Type</label>
-            <input type="number" class="form-control" name="msgType" id="field_msgType"
-                [(ngModel)]="mailbox.msgType" required/>
-            <div [hidden]="!(editForm.controls.msgType?.dirty && editForm.controls.msgType?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.msgType?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.msgType?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.title" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                [(ngModel)]="mailbox.title" required maxlength="200"/>
-            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
-                   This field cannot be longer than 200 characters.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.mcontent" for="field_mcontent">Mcontent</label>
-            <input type="text" class="form-control" name="mcontent" id="field_mcontent"
-                [(ngModel)]="mailbox.mcontent" required/>
-            <div [hidden]="!(editForm.controls.mcontent?.dirty && editForm.controls.mcontent?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.mcontent?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
+         -->
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="jerkaeroApp.mailbox.msgType" for="field_msgType">Msg
+				Type</label>
+			<div class="row">
+				<span class="col-sm-6"> <input type="radio" name="msgType" checked
+				    [(ngModel)]="mailbox.msgType" [value]="0" /> 群发
+				</span> <span class="col-sm-6"> <input type="radio" name="msgType"
+					[(ngModel)]="mailbox.msgType" [value]="1" /> 单独
+				</span>
+			</div>
+			<div
+				[hidden]="!(editForm.controls.msgType?.dirty && editForm.controls.msgType?.invalid)">
+				<small class="form-text text-danger"
+					[hidden]="!editForm.controls.msgType?.errors?.required"
+					jhiTranslate="entity.validation.required"> This field is
+					required. </small> <small class="form-text text-danger"
+					[hidden]="!editForm.controls.msgType?.errors?.number"
+					jhiTranslate="entity.validation.number"> This field should
+					be a number. </small>
+			</div>
+		</div>
+		<div class="form-group" *ngIf="mailbox.msgType==1">
+			<label class="form-control-label"
+				jhiTranslate="jerkaeroApp.mailbox.receiverId" for="field_receiverId">Receiver Id</label> 
+			
+			<!-- 
+			<input type="number" class="form-control" name="receiverId"
+				id="field_receiverId" [(ngModel)]="mailbox.receiverId" required />
+			-->
+			<select class="form-control" name="receiverId" [(ngModel)]="mailbox.receiverId" id="field_receiverId"  required>
+            <option *ngFor="let x of sites" value="x.url">{{x.site}}</option>
+            </select>
+			<div
+				[hidden]="!(editForm.controls.receiverId?.dirty && editForm.controls.receiverId?.invalid)">
+				<small class="form-text text-danger"
+					[hidden]="!editForm.controls.receiverId?.errors?.required"
+					jhiTranslate="entity.validation.required"> This field is
+					required. </small> <small class="form-text text-danger"
+					[hidden]="!editForm.controls.receiverId?.errors?.number"
+					jhiTranslate="entity.validation.number"> This field should
+					be a number. </small>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="jerkaeroApp.mailbox.title" for="field_title">Title</label>
+			<input type="text" class="form-control" name="title" id="field_title"
+				[(ngModel)]="mailbox.title" required maxlength="200" />
+			<div
+				[hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+				<small class="form-text text-danger"
+					[hidden]="!editForm.controls.title?.errors?.required"
+					jhiTranslate="entity.validation.required"> This field is
+					required. </small> <small class="form-text text-danger"
+					[hidden]="!editForm.controls.title?.errors?.maxlength"
+					jhiTranslate="entity.validation.maxlength"
+					translateValues="{ max: 200 }"> This field cannot be longer
+					than 200 characters. </small>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="form-control-label"
+				jhiTranslate="jerkaeroApp.mailbox.mcontent" for="field_mcontent">Mcontent</label>
+			<textarea rows="5" class="form-control" name="mcontent"
+				id="field_mcontent" [(ngModel)]="mailbox.mcontent" required></textarea>
+			<div
+				[hidden]="!(editForm.controls.mcontent?.dirty && editForm.controls.mcontent?.invalid)">
+				<small class="form-text text-danger"
+					[hidden]="!editForm.controls.mcontent?.errors?.required"
+					jhiTranslate="entity.validation.required"> This field is
+					required. </small>
+			</div>
+		</div>
+		<!--
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.sourceId" for="field_sourceId">Source Id</label>
             <input type="number" class="form-control" name="sourceId" id="field_sourceId"
@@ -98,6 +123,7 @@
                 </small>
             </div>
         </div>
+         
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.createdDate" for="field_createdDate">Created Date</label>
             <div class="input-group">
@@ -145,7 +171,7 @@
                 </small>
             </div>
         </div>
-
+ 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jerkaeroApp.mailbox.jerk" for="field_jerk">Jerk</label>
             <select class="form-control" id="field_jerk" name="jerk" [(ngModel)]="mailbox.jerk" >
@@ -160,13 +186,18 @@
                 <option [ngValue]="jerkOption.id === mailbox.jerk?.id ? mailbox.jerk : jerkOption" *ngFor="let jerkOption of jerks; trackBy: trackJerkById">{{jerkOption.id}}</option>
             </select>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+        -->
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal"
+			(click)="clear()">
+			<span class="fa fa-ban"></span>&nbsp;<span
+				jhiTranslate="entity.action.cancel">Cancel</span>
+		</button>
+		<button type="submit" [disabled]="editForm.form.invalid || isSaving"
+			class="btn btn-primary">
+			<span class="fa fa-save"></span>&nbsp;<span
+				jhiTranslate="entity.action.save">Save</span>
+		</button>
+	</div>
 </form>

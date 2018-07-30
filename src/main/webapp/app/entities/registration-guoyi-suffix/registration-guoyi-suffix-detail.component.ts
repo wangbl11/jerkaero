@@ -12,7 +12,8 @@ import { RegistrationGuoyiSuffixService } from './registration-guoyi-suffix.serv
     templateUrl: './registration-guoyi-suffix-detail.component.html'
 })
 export class RegistrationGuoyiSuffixDetailComponent implements OnInit, OnDestroy {
-
+    error: any;
+    success: any;
     registration: RegistrationGuoyiSuffix;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
@@ -31,7 +32,21 @@ export class RegistrationGuoyiSuffixDetailComponent implements OnInit, OnDestroy
         });
         this.registerChangeInRegistrations();
     }
+    setActive(registration,sts){
+        registration.fbzt = sts?1:0;
 
+        this.registrationService.update(registration).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    this.error = null;
+                    this.success = 'OK';
+                    this.registration = response.body;
+                } else {
+                    this.success = null;
+                    this.error = 'ERROR';
+                }
+            });
+    }
     load(id) {
         this.registrationService.find(id)
             .subscribe((registrationResponse: HttpResponse<RegistrationGuoyiSuffix>) => {

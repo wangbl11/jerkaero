@@ -178,11 +178,11 @@
          
         <dt><span jhiTranslate="jerkaeroApp.registration.createdDate">Created Date</span></dt>
         <dd>
-            <span>{{registration.createdDate | date:'yyyy-MM-dd HH:ss:mm'}}</span>
+            <span>{{registration.createdDate}}</span>
         </dd>
         <dt *ngIf="registration.modifiedDate"><span jhiTranslate="jerkaeroApp.registration.modifiedDate">Modified Date</span></dt>
          <dd *ngIf="registration.modifiedDate">
-            <span>{{registration.modifiedDate | date:'yyyy-MM-dd HH:ss:mm'}}</span>
+            <span>{{registration.modifiedDate}}</span>
         </dd>
         
     </dl>
@@ -207,14 +207,14 @@
         <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
     
-    <button type="button" *ngIf="registration.fbzt==0"
-            [routerLink]="['/registration-guoyi-suffix/'+ registration.id + '/online' ]"
+    <button type="button" *ngIf="registration.id&&registration.fbzt==0"
+            (click)="setActive(registration, true)" 
             class="btn btn-success">
         <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="entity.action.online"> Publish</span>
     </button>
     
-    <button type="button" *ngIf="registration.fbzt==1"
-            [routerLink]="['/registration-guoyi-suffix/'+ registration.id + '/offline' ]"
+    <button type="button" *ngIf="registration.id&&registration.fbzt==1"
+            (click)="setActive(registration, false)" 
             class="btn btn-danger">
         <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="entity.action.offline"> Publish</span>
     </button>

@@ -10,11 +10,13 @@
                 "jerkGuoyiSuffix": "極客",
                 "registrationGuoyiSuffix": "報名",
                 "preferenceGuoyiSuffix": "Preference",
-                "mailboxGuoyiSuffix": "郵箱",
+                "mailboxGuoyiSuffix": "消息",
                 "tagGuoyiSuffix": "標籤",
                 "settingGuoyiSuffix": "設置",
                 "footprintGuoyiSuffix": "Footprint",
                 "globalSettingGuoyiSuffix": "Global Setting",
+                "messageTextGuoyiSuffix": "Message Text",
+                "messageGuoyiSuffix": "Message",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

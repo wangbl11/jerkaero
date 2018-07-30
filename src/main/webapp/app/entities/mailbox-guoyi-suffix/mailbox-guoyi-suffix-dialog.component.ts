@@ -24,6 +24,12 @@ export class MailboxGuoyiSuffixDialogComponent implements OnInit {
     createdDateDp: any;
     readDateDp: any;
 
+    sites = [
+	    {site : "Google", url : "1"},
+	    {site : "Runoob", url : "2"},
+	    {site : "Taobao", url : "3"}
+	];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,

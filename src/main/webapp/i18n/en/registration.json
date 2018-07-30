@@ -6,7 +6,8 @@
                 "title": "Jerk - Registrations",
                 "createLabel": "Create a new Registration",
                 "createOrEditLabel": "Create or edit a Registration",
-                "search": "Search for Registration"
+                "search": "Search for Registration",
+                "exportLabel":"Export"
             },
             "created": "A new Registration is created with identifier {{ param }}",
             "updated": "A Registration is updated with identifier {{ param }}",

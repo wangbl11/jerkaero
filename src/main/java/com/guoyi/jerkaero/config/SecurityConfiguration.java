@@ -99,6 +99,46 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	  http
+          .rememberMe()
+          .rememberMeServices(rememberMeServices)
+          .rememberMeParameter("remember-me")
+          .key(jHipsterProperties.getSecurity().getRememberMe().getKey())
+      .and()
+          .formLogin()
+          .loginProcessingUrl("/api/authentication")
+          .successHandler(ajaxAuthenticationSuccessHandler())
+          .failureHandler(ajaxAuthenticationFailureHandler())
+          .usernameParameter("j_username")
+          .passwordParameter("j_password")
+          .permitAll()
+      .and()
+          .logout()
+          .logoutUrl("/api/logout")
+          .logoutSuccessHandler(ajaxLogoutSuccessHandler())
+          .permitAll()
+      .and()
+          .headers()
+          .frameOptions()
+          .disable()
+      .and()
+          .authorizeRequests()
+          .antMatchers("/api/register").permitAll()
+          .antMatchers("/api/activate").permitAll()
+          .antMatchers("/api/authenticate").permitAll()
+          .antMatchers("/api/account/reset-password/init").permitAll()
+          .antMatchers("/api/account/reset-password/finish").permitAll()
+          .antMatchers("/api/profile-info").permitAll()
+          .antMatchers("/api/**").authenticated()
+          .antMatchers("/websocket/tracker").hasAuthority(AuthoritiesConstants.ADMIN)
+          .antMatchers("/websocket/**").permitAll()
+          .antMatchers("/management/health").permitAll()
+          .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+          .antMatchers("/v2/api-docs/**").permitAll()
+          .antMatchers("/swagger-resources/configuration/ui").permitAll()
+          .antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN);
+    	  http.csrf().disable();
+    	/*
         http
             .csrf()
             .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
@@ -145,6 +185,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/v2/api-docs/**").permitAll()
             .antMatchers("/swagger-resources/configuration/ui").permitAll()
             .antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN);
+            */
 
     }
 

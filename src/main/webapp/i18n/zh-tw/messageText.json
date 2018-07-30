@@ -1,0 +1,34 @@
+
+{
+    "jerkaeroApp": {
+        "messageText" : {
+            "home": {
+                "title": "站內信",
+                "createLabel": "建立站內信",
+                "createOrEditLabel": "站內信",
+                "search": "搜尋"
+            },
+            "created": "新的 Message Text 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 站內信 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 站內信 刪除成功",
+            "delete": {
+                "question": "您確定要刪除這封站內信嗎?"
+            },
+            "detail": {
+                "title": "站內信"
+            },
+            "sendID": "發布者",
+            "type": "類型",
+            "title": "標題",
+            "mcontent": "正文",
+            "createdDate": "發布時間",
+            "recID":"收件人",
+            "msgStatus":"狀態",
+            "offline":"下線",
+            "online":"上線",
+            "receiver":{
+               "search":"搜索 收件人"
+            }
+        }
+    }
+}

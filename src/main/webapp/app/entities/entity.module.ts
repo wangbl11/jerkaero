@@ -8,6 +8,8 @@ import { JerkaeroTagGuoyiSuffixModule } from './tag-guoyi-suffix/tag-guoyi-suffi
 import { JerkaeroSettingGuoyiSuffixModule } from './setting-guoyi-suffix/setting-guoyi-suffix.module';
 import { JerkaeroFootprintGuoyiSuffixModule } from './footprint-guoyi-suffix/footprint-guoyi-suffix.module';
 import { JerkaeroGlobalSettingGuoyiSuffixModule } from './global-setting-guoyi-suffix/global-setting-guoyi-suffix.module';
+import { JerkaeroMessageTextGuoyiSuffixModule } from './message-text-guoyi-suffix/message-text-guoyi-suffix.module';
+import { JerkaeroMessageGuoyiSuffixModule } from './message-guoyi-suffix/message-guoyi-suffix.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -20,6 +22,8 @@ import { JerkaeroGlobalSettingGuoyiSuffixModule } from './global-setting-guoyi-s
         JerkaeroSettingGuoyiSuffixModule,
         JerkaeroFootprintGuoyiSuffixModule,
         JerkaeroGlobalSettingGuoyiSuffixModule,
+        JerkaeroMessageTextGuoyiSuffixModule,
+        JerkaeroMessageGuoyiSuffixModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

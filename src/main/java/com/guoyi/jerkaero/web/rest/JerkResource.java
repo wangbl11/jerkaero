@@ -107,6 +107,21 @@ public class JerkResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/jerks");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+    
+    /**
+     * GET  /jerks : get all the jerks.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of jerks in body
+     */
+    @GetMapping("/simplejerks")
+    @Timed
+    public ResponseEntity<List<Jerk>> getSimpleJerks(Pageable pageable) {
+        log.debug("REST request to get a page of Jerks");
+        Page<Jerk> page = jerkRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/jerks");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * GET  /jerks/:id : get the "id" jerk.
@@ -154,4 +169,20 @@ public class JerkResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /**
+     * SEARCH  /_search/jerks?query=:query : search for the jerk corresponding
+     * to the query.
+     *
+     * @param query the query of the jerk search
+     * @param pageable the pagination information
+     * @return the result of the search
+     */
+    @GetMapping("/_search/simpmplejerks")
+    @Timed
+    public ResponseEntity<List<Jerk>> searchSimpleJerks(@RequestParam String query, Pageable pageable) {
+        log.debug("REST request to search for a page of Jerks for query {}", query);
+        Page<Jerk> page = jerkSearchRepository.search(queryStringQuery(query), pageable);
+        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/simplejerks");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

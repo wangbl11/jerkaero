@@ -70,7 +70,6 @@ export class GlobalSettingGuoyiSuffixComponent implements OnInit, OnDestroy {
     }
 
     reset() {
-        console.log('%%%%%%%%%%%%%%%%%%%%%%%%%');
         this.page = 0;
         this.globalSettings = [];
         this.loadAll();

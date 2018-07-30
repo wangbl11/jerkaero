@@ -1,10 +1,22 @@
 <div>
+<!-- 
     <h2>
         <span jhiTranslate="jerkaeroApp.registration.home.title">Registrations</span>
         <button class="btn btn-primary float-right jh-create-entity create-registration-guoyi-suffix" [routerLink]="['/', { outlets: { popup: ['registration-guoyi-suffix-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="jerkaeroApp.registration.home.createLabel">
             Create new Registration
+            </span>
+        </button>
+    </h2>
+    -->
+    
+     <h2>
+        <span jhiTranslate="jerkaeroApp.registration.home.title">Registrations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-registration-guoyi-suffix">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="jerkaeroApp.registration.home.exportLabel">
+            Export
             </span>
         </button>
     </h2>
@@ -33,6 +45,7 @@
             <th><span jhiTranslate="jerkaeroApp.registration.registType">Regist Type</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.dwqc">Dwqc</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.hxcpmc">Hxcpmc</span></th>
+            <!-- 
             <th><span jhiTranslate="jerkaeroApp.registration.zztjdw">Zztjdw</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.dwhgrdz">Dwhgrdz</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.szqylx">Szqylx</span></th>
@@ -68,17 +81,20 @@
             <th><span jhiTranslate="jerkaeroApp.registration.lxyx">Lxyx</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.lxdz">Lxdz</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.ssly1">Ssly 1</span></th>
+            -->
             <th><span jhiTranslate="jerkaeroApp.registration.createdDate">Created Date</span></th>
             <th><span jhiTranslate="jerkaeroApp.registration.modifiedDate">Modified Date</span></th>
+             
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let registration of registrations ;trackBy: trackId">
                 <td><a [routerLink]="['../registration-guoyi-suffix', registration.id ]">{{registration.id}}</a></td>
-                <td>{{registration.registType}}</td>
+                <td> <span jhiTranslate="{{'jerkaeroApp.RegisterEnum.' + registration.registType}}">{{registration.registType}}</span></td>
                 <td>{{registration.dwqc}}</td>
                 <td>{{registration.hxcpmc}}</td>
+                <!-- 
                 <td>{{registration.zztjdw}}</td>
                 <td>{{registration.dwhgrdz}}</td>
                 <td>{{registration.szqylx}}</td>
@@ -114,8 +130,10 @@
                 <td>{{registration.lxyx}}</td>
                 <td>{{registration.lxdz}}</td>
                 <td>{{registration.ssly1}}</td>
-                <td>{{registration.createdDate | date:'mediumDate'}}</td>
-                <td>{{registration.modifiedDate | date:'mediumDate'}}</td>
+                -->
+                <td>{{registration.createdDate}}</td>
+                <td>{{registration.modifiedDate}}</td>
+                
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -125,9 +143,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'registration-guoyi-suffix/'+ registration.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                                [routerLink]="['/registration-guoyi-suffix/'+ registration.id + '/edit' ]"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>

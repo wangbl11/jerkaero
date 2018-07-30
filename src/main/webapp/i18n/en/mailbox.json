@@ -3,14 +3,14 @@
     "jerkaeroApp": {
         "mailbox" : {
             "home": {
-                "title": "Mailboxes",
-                "createLabel": "Create a new Mailbox",
-                "createOrEditLabel": "Create or edit a Mailbox",
-                "search": "Search for Mailbox"
+                "title": "Messages",
+                "createLabel": "Create a new message",
+                "createOrEditLabel": "Create or edit a message",
+                "search": "Search for Messages"
             },
-            "created": "A new Mailbox is created with identifier {{ param }}",
-            "updated": "A Mailbox is updated with identifier {{ param }}",
-            "deleted": "A Mailbox is deleted with identifier {{ param }}",
+            "created": "A new message is created with identifier {{ param }}",
+            "updated": "A Message is updated with identifier {{ param }}",
+            "deleted": "A Message is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Mailbox {{ id }}?"
             },

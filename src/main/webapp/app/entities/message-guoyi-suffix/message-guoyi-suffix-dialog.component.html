@@ -1,0 +1,102 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMessageLabel" jhiTranslate="jerkaeroApp.message.home.createOrEditLabel">Create or edit a Message</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!message.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="message.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.message.sendID" for="field_sendID">Send ID</label>
+            <input type="number" class="form-control" name="sendID" id="field_sendID"
+                [(ngModel)]="message.sendID" required/>
+            <div [hidden]="!(editForm.controls.sendID?.dirty && editForm.controls.sendID?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sendID?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.sendID?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.message.recID" for="field_recID">Rec ID</label>
+            <input type="number" class="form-control" name="recID" id="field_recID"
+                [(ngModel)]="message.recID" required/>
+            <div [hidden]="!(editForm.controls.recID?.dirty && editForm.controls.recID?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.recID?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.recID?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.message.messageID" for="field_messageID">Message ID</label>
+            <input type="number" class="form-control" name="messageID" id="field_messageID"
+                [(ngModel)]="message.messageID" required/>
+            <div [hidden]="!(editForm.controls.messageID?.dirty && editForm.controls.messageID?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.messageID?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.messageID?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.message.statue" for="field_statue">Statue</label>
+            <input type="number" class="form-control" name="statue" id="field_statue"
+                [(ngModel)]="message.statue" required/>
+            <div [hidden]="!(editForm.controls.statue?.dirty && editForm.controls.statue?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.statue?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.statue?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jerkaeroApp.message.readDate" for="field_readDate">Read Date</label>
+            <div class="d-flex">
+                <input id="field_readDate" type="datetime-local" class="form-control" name="readDate" [(ngModel)]="message.readDate"
+                required/>
+            </div>
+            <div [hidden]="!(editForm.controls.readDate?.dirty && editForm.controls.readDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.readDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.readDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

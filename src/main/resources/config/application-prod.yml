@@ -21,6 +21,7 @@ logging:
 
 spring:
     profiles:
+        active: prod
         include: swagger,no-liquibase
     devtools:
         restart:

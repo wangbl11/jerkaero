@@ -51,7 +51,11 @@ currentAccount: any;
     }
     setActive(jerk,sts){
         jerk.authStatus = sts?'A1':'A0';
-
+        if (jerk.jerkInfo&&jerk.jerkInfo.id){
+            //sts==false //not-certificate
+            if (!sts)
+               jerk.jerkInfo.fbzt=0;
+        }
         this.jerkService.update(jerk).subscribe(
             (response) => {
                 if (response.status === 200) {

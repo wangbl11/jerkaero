@@ -169,11 +169,11 @@ public class RegistrationResourceIntTest {
     private static final String DEFAULT_SSLY_1 = "AAAAAAAAAA";
     private static final String UPDATED_SSLY_1 = "BBBBBBBBBB";
 
-    private static final LocalDateTime DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDateTime UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_CREATED_DATE = LocalDateTime.now(ZoneId.systemDefault());
+    private static final LocalDateTime UPDATED_CREATED_DATE = LocalDateTime.now(ZoneId.systemDefault());
 
-    private static final LocalDateTime DEFAULT_MODIFIED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDateTime UPDATED_MODIFIED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_MODIFIED_DATE = LocalDateTime.now(ZoneId.systemDefault());
+    private static final LocalDateTime UPDATED_MODIFIED_DATE = LocalDateTime.now(ZoneId.systemDefault());
 
     @Autowired
     private RegistrationRepository registrationRepository;

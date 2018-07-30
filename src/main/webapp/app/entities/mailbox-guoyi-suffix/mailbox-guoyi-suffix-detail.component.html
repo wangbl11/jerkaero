@@ -6,7 +6,7 @@
     <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="jerkaeroApp.mailbox.sendId">Send Id</span></dt>
         <dd>
-            <span>{{mailbox.sendId}}</span>
+            <span>{{mailbox.sendId==-1?'管理员':mailbox.sendId}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.mailbox.receiverId">Receiver Id</span></dt>
         <dd>
@@ -14,7 +14,7 @@
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.mailbox.msgType">Msg Type</span></dt>
         <dd>
-            <span>{{mailbox.msgType}}</span>
+            <span>{{ 'jerkaeroApp.MessageTypeEnum.'+mailbox.msgType | translate }}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.mailbox.title">Title</span></dt>
         <dd>
@@ -24,22 +24,24 @@
         <dd>
             <span>{{mailbox.mcontent}}</span>
         </dd>
-        <dt><span jhiTranslate="jerkaeroApp.mailbox.sourceId">Source Id</span></dt>
+        <dt *ngIf="mailbox.sourceId"><span jhiTranslate="jerkaeroApp.mailbox.sourceId">Source Id</span></dt>
         <dd>
             <span>{{mailbox.sourceId}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.mailbox.createdDate">Created Date</span></dt>
         <dd>
-            <span>{{mailbox.createdDate | date:'mediumDate'}}</span>
+            <span>{{mailbox.createdDate}}</span>
         </dd>
+          <!--
         <dt><span jhiTranslate="jerkaeroApp.mailbox.readDate">Read Date</span></dt>
         <dd>
-            <span>{{mailbox.readDate | date:'mediumDate'}}</span>
+            <span>{{mailbox.readDate}}</span>
         </dd>
         <dt><span jhiTranslate="jerkaeroApp.mailbox.anonymous">Anonymous</span></dt>
         <dd>
             <span>{{mailbox.anonymous}}</span>
         </dd>
+       
         <dt><span jhiTranslate="jerkaeroApp.mailbox.jerk">Jerk</span></dt>
         <dd>
             <div *ngIf="mailbox.jerk">
@@ -52,6 +54,7 @@
                 <a [routerLink]="['/jerk-guoyi-suffix', mailbox.jerk?.id]">{{mailbox.jerk?.id}}</a>
             </div>
         </dd>
+         -->
     </dl>
 
     <button type="submit"
