@@ -5,24 +5,47 @@ import com.guoyi.jerkaero.domain.Jerk;
 
 import com.guoyi.jerkaero.repository.JerkRepository;
 import com.guoyi.jerkaero.repository.search.JerkSearchRepository;
+import com.guoyi.jerkaero.service.util.ExtResultMapper;
+import com.guoyi.jerkaero.service.util.PropertyHelper;
 import com.guoyi.jerkaero.web.rest.errors.BadRequestAlertException;
 import com.guoyi.jerkaero.web.rest.util.HeaderUtil;
 import com.guoyi.jerkaero.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+
+
+import org.springframework.data.elasticsearch.core.SearchResultMapper;
+
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.QueryStringQueryBuilder;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.highlight.HighlightBuilder;
+import org.elasticsearch.search.highlight.HighlightBuilder.Field;
+import org.elasticsearch.search.highlight.HighlightField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
+import org.springframework.data.elasticsearch.core.aggregation.impl.AggregatedPageImpl;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -41,12 +64,21 @@ public class JerkResource {
     private static final String ENTITY_NAME = "jerk";
 
     private final JerkRepository jerkRepository;
+    
+    private final PasswordEncoder passwordEncoder;
 
     private final JerkSearchRepository jerkSearchRepository;
+    
+    private final ElasticsearchTemplate elasticsearchTemplate;
+    
+    @Resource
+    private ExtResultMapper extResultMapper;
 
-    public JerkResource(JerkRepository jerkRepository, JerkSearchRepository jerkSearchRepository) {
+    public JerkResource(JerkRepository jerkRepository,PasswordEncoder passwordEncoder,  JerkSearchRepository jerkSearchRepository,ElasticsearchTemplate elasticsearchTemplate) {
         this.jerkRepository = jerkRepository;
         this.jerkSearchRepository = jerkSearchRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.elasticsearchTemplate=elasticsearchTemplate;
     }
 
     /**
@@ -63,6 +95,8 @@ public class JerkResource {
         if (jerk.getId() != null) {
             throw new BadRequestAlertException("A new jerk cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        String encryptedPassword = passwordEncoder.encode(jerk.getPasswd());
+        jerk.setPasswd(encryptedPassword);
         Jerk result = jerkRepository.save(jerk);
         jerkSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/jerks/" + result.getId()))
@@ -164,7 +198,66 @@ public class JerkResource {
     @Timed
     public ResponseEntity<List<Jerk>> searchJerks(@RequestParam String query, Pageable pageable) {
         log.debug("REST request to search for a page of Jerks for query {}", query);
-        Page<Jerk> page = jerkSearchRepository.search(queryStringQuery(query), pageable);
+        query="*"+query+"*";
+        
+        //three ways to work on multiple fields
+        
+        //Page<Jerk> page = jerkSearchRepository.search(queryStringQuery(query).field("_all"), pageable);
+        
+        //Page<Jerk> page = jerkSearchRepository.search(queryStringQuery(query).defaultOperator(QueryStringQueryBuilder.Operator.OR).field("username").field("displayname"), pageable);
+
+        //Page<Jerk> page =jerkSearchRepository.search(QueryBuilders.boolQuery().should(QueryBuilders.wildcardQuery("username", query))
+        //      .should(QueryBuilders.wildcardQuery("displayname", query)),pageable);
+
+        QueryBuilder _query=QueryBuilders.boolQuery().should(QueryBuilders.wildcardQuery("username", query))
+                .should(QueryBuilders.wildcardQuery("displayname", query));
+        
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(_query)
+                .withHighlightFields(new HighlightBuilder.Field("displayname").preTags("<span style='background-color:yellow'>").postTags("</span>"),
+                        new HighlightBuilder.Field("username").preTags("<span style='background-color:yellow'>").postTags("</span>")).build();
+//        
+//        searchQuery.setPageable(pageable);
+//        Page<Jerk> page =jerkSearchRepository.search(searchQuery);
+//        
+        
+        String[] heightFields= {"displayname","username"};
+        Page<Jerk> page = elasticsearchTemplate.queryForPage(searchQuery, Jerk.class, extResultMapper);
+//        Page<Jerk> page = elasticsearchTemplate.queryForPage(searchQuery, Jerk.class, new SearchResultMapper() {
+//        	@Override
+//        	public <T> AggregatedPage<T> mapResults(SearchResponse response, Class<T> clazz, Pageable pageable) {
+//                List<T> chunk = new ArrayList<T>();
+//                for (SearchHit searchHit : response.getHits()) {
+//                    if (response.getHits().getHits().length <= 0) {
+//                        return null;
+//                    }
+//
+//                    System.out.println(searchHit.getId());
+//                    Jerk jerk=new Jerk();
+//                    jerk.setId(Long.parseLong(searchHit.getId()));
+//                    
+//                    Map<String, Object> entityMap = searchHit.getSource();
+//                    
+//                    for (String highName : heightFields) {
+//                    	HighlightField _fld=searchHit.getHighlightFields().get(highName);
+//                    	if (_fld!=null)
+//                        { 
+//                    		String highValue = searchHit.getHighlightFields().get(highName).fragments()[0].toString();
+//                    		entityMap.put(highName, highValue);
+//                        }
+//                        
+//                    }
+//                    chunk.add((T) PropertyHelper.getFansheObj(Jerk.class, entityMap));
+//                }
+//                if (chunk.size() > 0) {
+//                    return new AggregatedPageImpl<T>((List<T>) chunk);
+//                }
+//                return null;
+//            }
+//        });
+//        
+//        System.out.println(page);
+//        
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/jerks");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

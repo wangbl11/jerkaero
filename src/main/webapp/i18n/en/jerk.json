@@ -12,7 +12,7 @@
             "updated": "A Jerk is updated with identifier {{ param }}",
             "deleted": "A Jerk is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Jerk {{ id }}?"
+                "question": "Are you sure you want to delete Jerk [{{ id }}]?"
             },
             "detail": {
                 "title": "Jerk"

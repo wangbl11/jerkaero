@@ -7,6 +7,10 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -44,12 +48,14 @@ public class Preference implements Serializable {
     private String wechat;
 
     @Column(name = "address")
+    @Field(type=FieldType.String,analyzer="ik_max_word", searchAnalyzer="ik_max_word")
     private String address;
 
     @Column(name = "image_url")
     private String imageUrl;
 
     @Column(name = "lang")
+    @Field(type=FieldType.String,index = FieldIndex.not_analyzed)
     private String lang;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)

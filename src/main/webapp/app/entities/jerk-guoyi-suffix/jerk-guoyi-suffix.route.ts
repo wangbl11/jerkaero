@@ -27,6 +27,15 @@ export class JerkGuoyiSuffixResolvePagingParams implements Resolve<any> {
 }
 
 export const jerkRoute: Routes = [
+   {
+        path: 'jerk-guoyi-suffix-new',
+        component: JerkGuoyiSuffixDialogComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'jerkaeroApp.jerk.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+    },
     {
         path: 'jerk-guoyi-suffix',
         component: JerkGuoyiSuffixComponent,
@@ -86,16 +95,6 @@ export const jerkRoute: Routes = [
 ];
 
 export const jerkPopupRoute: Routes = [
-    {
-        path: 'jerk-guoyi-suffix-new',
-        component: JerkGuoyiSuffixDialogComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'jerkaeroApp.jerk.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
     {
         path: 'jerk-guoyi-suffix/:id/delete',
         component: JerkGuoyiSuffixDeletePopupComponent,

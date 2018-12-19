@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -54,8 +55,15 @@ public class Message implements Serializable {
     @Column(name = "read_date", nullable = false)
     private LocalDateTime readDate;
      
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "del_date", nullable = false)
+    private LocalDateTime delDate;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="message_id")
+    @JsonIgnore
     private MessageText messageText;
     
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -132,7 +140,20 @@ public class Message implements Serializable {
         this.readDate = readDate;
     }
     
-    public String getRecName() {
+    public LocalDateTime getDelDate() {
+		return delDate;
+	}
+    
+    public Message getDate(LocalDateTime delDate) {
+        this.delDate = delDate;
+        return this;
+    }
+
+	public void setDelDate(LocalDateTime delDate) {
+		this.delDate = delDate;
+	}
+
+	public String getRecName() {
 		return recName;
 	}
     
@@ -147,6 +168,14 @@ public class Message implements Serializable {
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 	
+	public MessageText getMessageText() {
+		return messageText;
+	}
+
+	public void setMessageText(MessageText messageText) {
+		this.messageText = messageText;
+	}
+
 	@Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -175,6 +204,7 @@ public class Message implements Serializable {
             ", recName=" + getRecName() +
             ", statue=" + getStatue() +
             ", readDate='" + getReadDate() + "'" +
+            ", delDate='" + getDelDate() + "'" +
             "}";
     }
 }

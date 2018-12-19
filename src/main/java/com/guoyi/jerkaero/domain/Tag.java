@@ -10,7 +10,10 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.guoyi.jerkaero.domain.enumeration.StatusEnum;
 
 import java.io.Serializable;
@@ -25,7 +28,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tag")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "tag")
+@Document(indexName = "tags")
 public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,15 +55,17 @@ public class Tag implements Serializable {
     private Integer weight;
 
 
-//    @JsonDeserialize(using = LocalDateDeserializer.class)
-//    @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_date", insertable = false,updatable=false)
-    private Instant createdDate;
+    private LocalDateTime createdDate;
 
-//    @JsonDeserialize(using = LocalDateDeserializer.class)
-//    @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "modified_date",insertable=false,updatable=false)
-    private Instant modifiedDate;
+    private LocalDateTime modifiedDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -123,29 +128,29 @@ public class Tag implements Serializable {
         this.weight = weight;
     }
 
-    public Instant getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public Tag createdDate(Instant createdDate) {
+    public Tag createdDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(Instant createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Instant getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public Tag modifiedDate(Instant modifiedDate) {
+    public Tag modifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(Instant modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

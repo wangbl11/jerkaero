@@ -9,8 +9,14 @@ import javax.validation.constraints.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.guoyi.jerkaero.domain.enumeration.SettingTypeEnum;
 
 /**
@@ -19,7 +25,7 @@ import com.guoyi.jerkaero.domain.enumeration.SettingTypeEnum;
 @Entity
 @Table(name = "setting")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "setting")
+@Document(indexName = "jerksetting")
 public class Setting implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,7 +35,6 @@ public class Setting implements Serializable {
 	private Long id;
 
 	@NotNull
-	@Size(max = 100)
 	@Column(name = "name", length = 100, nullable = false)
 	private String name;
 
@@ -39,20 +44,24 @@ public class Setting implements Serializable {
 	private SettingTypeEnum type;
 
 	@NotNull
-	@Size(max = 200)
 	@Column(name = "jhi_value", length = 200, nullable = false)
 	private String value;
 
 	@NotNull
-	@Size(max = 200)
 	@Column(name = "defvalue", length = 200, nullable = false)
 	private String defvalue;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name = "created_date", insertable = false, updatable = false)
-	private LocalDate createdDate;
+	private LocalDateTime createdDate;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name = "modified_date", insertable = false, updatable = false)
-	private LocalDate modifiedDate;
+	private LocalDateTime modifiedDate;
 
 	// jhipster-needle-entity-add-field - JHipster will add fields here, do not
 	// remove
@@ -116,29 +125,29 @@ public class Setting implements Serializable {
 		this.defvalue = defvalue;
 	}
 
-	public LocalDate getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
-	public Setting createdDate(LocalDate createdDate) {
+	public Setting createdDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 		return this;
 	}
 
-	public void setCreatedDate(LocalDate createdDate) {
+	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public LocalDate getModifiedDate() {
+	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public Setting modifiedDate(LocalDate modifiedDate) {
+	public Setting modifiedDate(LocalDateTime modifiedDate) {
 		this.modifiedDate = modifiedDate;
 		return this;
 	}
 
-	public void setModifiedDate(LocalDate modifiedDate) {
+	public void setModifiedDate(LocalDateTime modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 

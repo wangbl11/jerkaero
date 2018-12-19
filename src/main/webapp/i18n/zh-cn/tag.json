@@ -12,7 +12,7 @@
             "updated": "标签 {{ param }} 更新成功",
             "deleted": "标签 {{ param }} 删除成功",
             "delete": {
-                "question": "你确定要删除 标签 {{ id }} 吗？"
+                "question": "你确定要删除标签 <strong style=&quot;color:red&quot;>{{ id }}</strong>吗？"
             },
             "detail": {
                 "title": "标签"

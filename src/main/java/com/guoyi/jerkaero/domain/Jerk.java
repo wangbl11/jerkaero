@@ -13,6 +13,10 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -30,7 +34,7 @@ import com.guoyi.jerkaero.domain.enumeration.AuthStatusEnum;
 @Document(indexName = "jerk")
 public class Jerk implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,10 +53,12 @@ public class Jerk implements Serializable {
     @NotNull
     @Size(max = 100)
     @Column(name = "displayname", length = 100, nullable = false)
+    @Field(type=FieldType.String,analyzer="ik_max_word", searchAnalyzer="ik_max_word")
     private String displayname;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
+    @Field(type=FieldType.String,index = FieldIndex.not_analyzed)
     @Column(name = "auth_status", nullable = false)
     private AuthStatusEnum authStatus;
 
@@ -70,11 +76,13 @@ public class Jerk implements Serializable {
 
     @OneToOne(fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
     @JoinColumn(name="registration_id",unique = true)
+    @Field(type = FieldType.Nested)
     private Registration jerkInfo;
 
 
     @OneToOne(fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
     @JoinColumn(name="preference_id")
+    @Field(type = FieldType.Nested)
     private Preference preference;
 
     @OneToMany

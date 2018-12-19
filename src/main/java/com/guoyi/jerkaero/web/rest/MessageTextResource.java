@@ -3,6 +3,7 @@ package com.guoyi.jerkaero.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.guoyi.jerkaero.domain.MessageText;
 import com.guoyi.jerkaero.domain.VMessage;
+import com.guoyi.jerkaero.domain.enumeration.MessageTypeEnum;
 import com.guoyi.jerkaero.repository.MessageTextRepository;
 import com.guoyi.jerkaero.repository.search.MessageTextSearchRepository;
 import com.guoyi.jerkaero.service.MessageService;
@@ -147,6 +148,7 @@ public class MessageTextResource {
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, messageText.getId().toString())).body(result);
 	}
+
 	
 	/**
 	 * GET /message-texts : get all the messageTexts.
@@ -167,19 +169,28 @@ public class MessageTextResource {
 	
 	@GetMapping("/private-unread-messages/{id}")
 	@Timed
-	public ResponseEntity<List<VMessage>> getAllUnReadMessages(@PathVariable Long id,Pageable pageable) {
+	public ResponseEntity<List<VMessage>> getPrivateUnReadMessages(@PathVariable Long id,Pageable pageable) {
 		log.debug("REST request to get a page of MessageTexts");
-		Page<VMessage> page = messageTextRepository.findPrivateUnRead(id, pageable);
+		Page<VMessage> page = messageTextRepository.findVMessageByStatuses(MessageTypeEnum.PRIVATE,0,id, pageable);
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/private-unread-messages");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 	
 	@GetMapping("/private-readed-messages/{id}")
 	@Timed
-	public ResponseEntity<List<VMessage>> getAllReadedMessages(@PathVariable Long id,Pageable pageable) {
+	public ResponseEntity<List<VMessage>> getPrivateReadedMessages(@PathVariable Long id,Pageable pageable) {
 		log.debug("REST request to get a page of MessageTexts");
-		Page<VMessage> page = messageTextRepository.findPrivateReaded(id, pageable);
-		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/private-readed-messages");
+		Page<VMessage> page = messageTextRepository.findVMessageByStatuses(MessageTypeEnum.PRIVATE,1,id, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/private-unread-messages");
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
+	
+	@GetMapping("/private-all-messages/{id}")
+	@Timed
+	public ResponseEntity<List<VMessage>> getPrivateAllMessages(@PathVariable Long id,Pageable pageable) {
+		log.debug("REST request to get a page of MessageTexts");
+		Page<VMessage> page = messageTextRepository.findAllPrivateVMessages(id, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/public-unread-messages");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 	
@@ -191,7 +202,33 @@ public class MessageTextResource {
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/public-unread-messages");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
-
+	
+	@GetMapping("/public-readed-messages/{id}")
+	@Timed
+	public ResponseEntity<List<VMessage>> getPublicReadedMessages(@PathVariable Long id,Pageable pageable) {
+		log.debug("REST request to get a page of MessageTexts");
+		Page<VMessage> page = messageTextRepository.findVMessageByStatuses(MessageTypeEnum.BROADCAST,1,id, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/public-unread-messages");
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
+	
+	@GetMapping("/public-all-messages/{id}")
+	@Timed
+	public ResponseEntity<List<VMessage>> getPublicAllMessages(@PathVariable Long id,Pageable pageable) {
+		log.debug("REST request to get a page of MessageTexts");
+		Page<VMessage> page = messageTextRepository.findPublicAll(id, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/public-unread-messages");
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
+	
+	@GetMapping("/all-messages/{id}")
+	@Timed
+	public ResponseEntity<List<VMessage>> getAllMessages(@PathVariable Long id,Pageable pageable) {
+		log.debug("REST request to get a page of MessageTexts");
+		Page<VMessage> page = messageTextRepository.findPublicAll(id, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/public-unread-messages");
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+	}
 	
 	/**
 	 * GET /message-texts/:id : get the "id" messageText.

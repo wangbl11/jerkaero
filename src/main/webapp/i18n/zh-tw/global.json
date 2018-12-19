@@ -15,7 +15,7 @@
                 "settingGuoyiSuffix": "設置",
                 "footprintGuoyiSuffix": "Footprint",
                 "globalSettingGuoyiSuffix": "Global Setting",
-                "messageTextGuoyiSuffix": "Message Text",
+                "messageTextGuoyiSuffix": "消息",
                 "messageGuoyiSuffix": "Message",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },

@@ -142,7 +142,7 @@ public class RegistrationResource {
     public List<Registration> searchRegistrations(@RequestParam String query) {
         log.debug("REST request to search Registrations for query {}", query);
         return StreamSupport
-            .stream(registrationSearchRepository.search(queryStringQuery(query)).spliterator(), false)
+            .stream(registrationSearchRepository.search(queryStringQuery(query).field("_all")).spliterator(), false)
             .collect(Collectors.toList());
     }
 

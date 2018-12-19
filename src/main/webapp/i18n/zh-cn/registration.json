@@ -13,7 +13,7 @@
             "updated": "报名 {{ param }} 更新成功",
             "deleted": "报名 {{ param }} 删除成功",
             "delete": {
-                "question": "你确定要删除 报名 {{ id }} 吗？"
+                "question": "你确定要删除报名【{{ id }}】吗？"
             },
             "detail": {
                 "title": "报名"

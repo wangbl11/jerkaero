@@ -1,15 +1,16 @@
 <div>
-<!-- 
+ 
     <h2>
         <span jhiTranslate="jerkaeroApp.jerk.home.title">Jerks</span>
-        <button class="btn btn-primary float-right jh-create-entity create-jerk-guoyi-suffix" [routerLink]="['/', { outlets: { popup: ['jerk-guoyi-suffix-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-jerk-guoyi-suffix" 
+            [routerLink]="['../jerk-guoyi-suffix-new' ]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="jerkaeroApp.jerk.home.createLabel">
             Create new Jerk
             </span>
         </button>
     </h2>
-    -->
+    
     
     <jhi-alert></jhi-alert>
     <div class="row">
@@ -45,8 +46,8 @@
             <tbody>
             <tr *ngFor="let jerk of jerks ;trackBy: trackId">
                 <td><a [routerLink]="['../jerk-guoyi-suffix', jerk.id ]">{{jerk.id}}</a></td>
-                <td>{{jerk.username}}</td>
-                <td>{{jerk.displayname}}</td>
+                <td [innerHTML]="jerk.username | keepHtml"></td>
+                <td [innerHTML]="jerk.displayname | keepHtml"></td>
                 <td>
                     <button class="btn btn-danger btn-sm" (click)="setActive(jerk, true)" *ngIf="jerk.authStatus=='A0'"
                             jhiTranslate="jerkaeroApp.jerk.uncertificated">non-certificated</button>

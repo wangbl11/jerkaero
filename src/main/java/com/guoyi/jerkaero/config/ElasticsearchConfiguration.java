@@ -11,6 +11,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.guoyi.jerkaero.service.util.ExtResultMapper;
 
 @Configuration
 public class ElasticsearchConfiguration {
@@ -19,7 +20,11 @@ public class ElasticsearchConfiguration {
     public ElasticsearchTemplate elasticsearchTemplate(Client client, Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder) {
         return new ElasticsearchTemplate(client, new CustomEntityMapper(jackson2ObjectMapperBuilder.createXmlMapper(false).build()));
     }
-
+    
+    @Bean 
+    public ExtResultMapper extResultMapper() {
+    	return new ExtResultMapper();
+    }
     public class CustomEntityMapper implements EntityMapper {
 
         private ObjectMapper objectMapper;

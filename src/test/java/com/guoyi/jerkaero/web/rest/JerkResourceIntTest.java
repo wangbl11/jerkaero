@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -69,6 +70,9 @@ public class JerkResourceIntTest {
     private JerkSearchRepository jerkSearchRepository;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+    
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -87,7 +91,7 @@ public class JerkResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final JerkResource jerkResource = new JerkResource(jerkRepository, jerkSearchRepository);
+        final JerkResource jerkResource = new JerkResource(jerkRepository, passwordEncoder,jerkSearchRepository);
         this.restJerkMockMvc = MockMvcBuilders.standaloneSetup(jerkResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

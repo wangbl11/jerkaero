@@ -141,9 +141,14 @@ public class SettingResource {
     @Timed
     public List<Setting> searchSettings(@RequestParam String query) {
         log.debug("REST request to search Settings for query {}", query);
+        System.out.println(query);
+//        return StreamSupport
+//            .stream(settingSearchRepository.search(queryStringQuery(query)).spliterator(), false)
+//            .collect(Collectors.toList());
+        
         return StreamSupport
-            .stream(settingSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+                .stream(settingSearchRepository.findByNameLike(query).spliterator(), false)
+                .collect(Collectors.toList());
     }
 
 }

@@ -7,6 +7,10 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -54,6 +58,7 @@ public class Registration implements Serializable {
     @NotNull
     @Column(name = "regist_type", nullable = false)
     @Enumerated(EnumType.ORDINAL)
+    @Field(type=FieldType.String,index = FieldIndex.not_analyzed)
     private RegisterEnum registType;
 
     @NotNull
@@ -83,6 +88,7 @@ public class Registration implements Serializable {
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "ssly", nullable = false)
+    @Field(type=FieldType.String,analyzer="ik_max_word", searchAnalyzer="ik_max_word")
     private SslyEnum ssly;
 
     @NotNull
@@ -101,6 +107,7 @@ public class Registration implements Serializable {
     //国内外获奖奖项
     @Size(max = 500)
     @Column(name = "gnwhjjx", length = 500)
+    @Field(type=FieldType.String,analyzer="ik_max_word", searchAnalyzer="ik_max_word")
     private String gnwhjjx;
 
     //专利技术
@@ -117,12 +124,14 @@ public class Registration implements Serializable {
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "hxjsly", nullable = false)
+    @Field(type=FieldType.String,index = FieldIndex.not_analyzed)
     private HxjslyEnum hxjsly;
     
     //科技成果转化
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "kjcgzh", nullable = false)
+    @Field(type=FieldType.String,index = FieldIndex.not_analyzed)
     private KjcgzhEnum kjcgzh;
 
     //军民两用情况
@@ -250,6 +259,7 @@ public class Registration implements Serializable {
     @NotNull
     @Size(max = 120)
     @Column(name = "lxdz", length = 120, nullable = false)
+    @Field(type=FieldType.String,analyzer="ik_max_word", searchAnalyzer="ik_max_word")
     private String lxdz;
 
     @Size(max = 60)

@@ -3,6 +3,20 @@ import { RouterModule } from '@angular/router';
 
 import { JerkaeroSharedModule } from '../../shared';
 //import { RegistrationGuoyiSuffixDetailComponent } from '../registration-guoyi-suffix-detail.component';
+
+import { DomSanitizer } from '@angular/platform-browser';
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'keepHtml' })
+export class EscapeHtmlPipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {
+  }
+
+  transform(content) {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+}
+
 import {
     JerkGuoyiSuffixService,
     JerkGuoyiSuffixPopupService,
@@ -31,7 +45,8 @@ const ENTITY_STATES = [
         JerkGuoyiSuffixDetailComponent,
         JerkGuoyiSuffixDialogComponent,
         JerkGuoyiSuffixDeleteDialogComponent,
-        JerkGuoyiSuffixDeletePopupComponent
+        JerkGuoyiSuffixDeletePopupComponent,
+        EscapeHtmlPipe
     ],
     entryComponents: [
         JerkGuoyiSuffixComponent,

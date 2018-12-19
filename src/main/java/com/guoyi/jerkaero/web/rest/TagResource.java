@@ -149,7 +149,8 @@ public class TagResource {
     @Timed
     public ResponseEntity<List<Tag>> searchTags(@RequestParam String query, Pageable pageable) {
         log.debug("REST request to search for a page of Tags for query {}", query);
-        Page<Tag> page = tagSearchRepository.search(queryStringQuery(query), pageable);
+        //Page<Tag> page = tagSearchRepository.search(queryStringQuery(query), pageable);
+        Page<Tag> page = tagSearchRepository.findByNameLike(query, pageable);
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/tags");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

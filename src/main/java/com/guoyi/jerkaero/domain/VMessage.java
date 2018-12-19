@@ -87,12 +87,25 @@ public class VMessage implements Serializable {
     @Column(name = "read_date", nullable = false)
     private LocalDateTime readDate;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "del_date", nullable = false)
+    private LocalDateTime delDate;
+    
 	public VMessage() {
 		
 	}
-	public VMessage(Long sendID, MessageTypeEnum msgType, MessageTextStatusEnum msgStatus, String title,
-			String mcontent) {
+	public VMessage( String title,String mcontent,LocalDateTime createdDate,MessageTextStatusEnum msgStatus, MessageTypeEnum msgType,Long sendID,Long recID,Long messageID, LocalDateTime readDate,LocalDateTime delDate,Integer statue, String recName
+			) {
 		super();
+		this.createdDate=createdDate;
+		this.readDate=readDate;
+		this.delDate=delDate;
+		this.recID=recID;
+		this.recName=recName;
+		this.statue=statue;
+		this.messageID=messageID;
 		this.sendID = sendID;
 		this.msgType = msgType;
 		this.msgStatus = msgStatus;
@@ -218,6 +231,18 @@ public class VMessage implements Serializable {
 		this.readDate = readDate;
 	}
 	
+	public LocalDateTime getDelDate() {
+		return delDate;
+	}
+	public void setDelDate(LocalDateTime delDate) {
+		this.delDate = delDate;
+	}
+	public Long getMessageID() {
+		return messageID;
+	}
+	public void setMessageID(Long messageID) {
+		this.messageID = messageID;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -240,8 +265,11 @@ public class VMessage implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MessageText{" + "id=" + getId() + ", sendID=" + getSendID() + ", type=" + getMsgType() + ", title='"
-				+ getTitle() + "'" + ", mcontent='" + getMcontent() + "'" + ", createdDate='" + getCreatedDate() + "'"
+		return "VMessage{" + "id=" + getId() + ", sendID=" + getSendID() + ", type=" + getMsgType() + ", title='"
+				+ getTitle() + "'" + ", mcontent='" + getMcontent() + "'" + ", createdDate='" + getCreatedDate()
+				+", readDate='" + getReadDate()
+				+", delDate='" + getDelDate()
+				+ "'"
 				+ "}";
 	}
 }

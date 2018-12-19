@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -93,6 +93,38 @@ public class MessageResource {
             .body(result);
     }
 
+    @PutMapping("/readMessage")
+    @Timed
+    public ResponseEntity<Message> readMessage(@Valid @RequestBody Message message) throws URISyntaxException {
+        //judge message.id not null
+    	message.setReadDate(LocalDateTime.now());
+        if (message.getId() == null) {
+            return createMessage(message);
+        }
+    	//
+        Message result = messageRepository.save(message);
+        messageSearchRepository.save(result);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, message.getId().toString()))
+            .body(result);
+    }
+    
+    @PutMapping("/deleteMessage")
+    @Timed
+    public ResponseEntity<Message> deleteMessage(@Valid @RequestBody Message message) throws URISyntaxException {
+        //judge message.id not null
+    	message.setDelDate(LocalDateTime.now());
+        if (message.getId() == null) {
+            return createMessage(message);
+        }
+    	//
+        Message result = messageRepository.save(message);
+        messageSearchRepository.save(result);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, message.getId().toString()))
+            .body(result);
+    }
+    
     /**
      * GET  /messages : get all the messages.
      *
